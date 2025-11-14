@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regular Civil Courses - National College of Technology</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #1a2c5f;
+        --secondary: #f8a31b;
+        --light: #f5f5f5;
+        --dark: #333;
+        --white: #fff;
+        --accent: #2c3e50;
+        --gradient: linear-gradient(135deg, #1a2c5f 0%, #2c3e50 100%);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* Hero Section with Animation */
+      .hero-section {
+        height: 60vh;
+        background: linear-gradient(
+            rgba(26, 44, 95, 0.8),
+            rgba(44, 62, 80, 0.9)
+          ),
+          url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-content {
+        color: var(--white);
+        z-index: 2;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .hero-content h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        animation: slideInFromTop 1s ease-out;
+      }
+
+      .hero-content p {
+        font-size: 1.4rem;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
+        opacity: 0.9;
+        animation: fadeIn 1.5s ease-out;
+      }
+
+      /* Floating elements animation */
+      .floating-elements {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+      }
+
+      .floating-element {
+        position: absolute;
+        background: rgba(248, 163, 27, 0.1);
+        border-radius: 50%;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .floating-element:nth-child(1) {
+        width: 80px;
+        height: 80px;
+        top: 20%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .floating-element:nth-child(2) {
+        width: 120px;
+        height: 120px;
+        top: 60%;
+        right: 10%;
+        animation-delay: 2s;
+      }
+
+      .floating-element:nth-child(3) {
+        width: 60px;
+        height: 60px;
+        bottom: 20%;
+        left: 20%;
+        animation-delay: 4s;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 20px;
+      }
+
+      .courses-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 40px;
+        margin-bottom: 60px;
+      }
+
+      /* Modern Card Design */
+      .course-card {
+        background: var(--white);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .course-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(26, 44, 95, 0.1) 0%,
+          rgba(248, 163, 27, 0.05) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 1;
+      }
+
+      .course-card:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+      }
+
+      .course-card:hover::before {
+        opacity: 1;
+      }
+
+      .course-image {
+        height: 240px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .course-image::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        background: linear-gradient(
+          to top,
+          rgba(26, 44, 95, 0.9) 0%,
+          transparent 100%
+        );
+      }
+
+      .course-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: var(--secondary);
+        color: var(--white);
+        padding: 8px 16px;
+        border-radius: 25px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        z-index: 2;
+        box-shadow: 0 5px 15px rgba(248, 163, 27, 0.3);
+      }
+
+      .course-content {
+        padding: 30px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .course-content h3 {
+        color: var(--primary);
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+        font-weight: 700;
+      }
+
+      .course-content p {
+        color: #666;
+        line-height: 1.7;
+        margin-bottom: 25px;
+        font-size: 0.95rem;
+      }
+
+      .course-features {
+        list-style: none;
+        margin-bottom: 30px;
+      }
+
+      .course-features li {
+        padding: 10px 0;
+        color: #555;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .course-features li:hover {
+        color: var(--primary);
+        transform: translateX(5px);
+      }
+
+      .course-features li:last-child {
+        border-bottom: none;
+      }
+
+      .course-features li i {
+        color: var(--secondary);
+        margin-right: 12px;
+        font-size: 14px;
+        background: rgba(248, 163, 27, 0.1);
+        padding: 8px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      .course-features li:hover i {
+        background: var(--secondary);
+        color: var(--white);
+        transform: scale(1.1);
+      }
+
+      .enroll-btn {
+        display: block;
+        width: 100%;
+        padding: 16px;
+        background: var(--gradient);
+        color: var(--white);
+        text-align: center;
+        text-decoration: none;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .enroll-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .enroll-btn:hover {
+        background: linear-gradient(135deg, #15234a 0%, #243447 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(26, 44, 95, 0.3);
+      }
+
+      .enroll-btn:hover::before {
+        left: 100%;
+      }
+
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 35px;
+        background: var(--primary);
+        color: var(--white);
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin-top: 20px;
+        box-shadow: 0 5px 15px rgba(26, 44, 95, 0.2);
+      }
+
+      .back-btn:hover {
+        background: #15234a;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(26, 44, 95, 0.3);
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInFromTop {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 0.9;
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+
+        50% {
+          transform: translateY(-20px) rotate(180deg);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero-content p {
+          font-size: 1.1rem;
+        }
+
+        .courses-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .course-card {
+          margin: 0 10px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-section {
+          height: 50vh;
+        }
+
+        .hero-content h1 {
+          font-size: 2rem;
+        }
+
+        .container {
+          padding: 40px 15px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Animated Hero Section -->
+    <section class="hero-section">
+      <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+      </div>
+      <div class="hero-content">
+        <h1>Civil Engineering Courses</h1>
+        <p>
+          Build the future with comprehensive civil engineering education
+          covering structural design, construction management, and
+          infrastructure development
+        </p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="courses-grid">
+        <!-- NEBOSH International General Certificate Card -->
+        <div class="course-card">
+          <div
+            class="course-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1600267153806-0a9f7d9be0b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            "
+          >
+            <div class="course-badge">International</div>
+          </div>
+          <div class="course-content">
+            <h3>NEBOSH (International General Certificate)</h3>
+            <p>
+              Enhance your skills in workplace health and safety with globally
+              recognized qualifications that open doors to professional HSE
+              careers.
+            </p>
+            <ul class="course-features">
+              <li>
+                <i class="fas fa-check"></i> Risk Assessment & Control Measures
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Workplace Hazards & Safety
+                Management
+              </li>
+              <li><i class="fas fa-check"></i> Fire & Electrical Safety</li>
+              <li><i class="fas fa-check"></i> Environmental Management</li>
+              <li><i class="fas fa-check"></i> International HSE Standards</li>
+            </ul>
+            <button
+              class="enroll-btn"
+              onclick="enrollCourse('NEBOSH International General Certificate')"
+            >
+              <i class="fas fa-rocket"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- OTHM Level 3 Certificate in Occupational Health and Safety Card -->
+        <div class="course-card">
+          <div
+            class="course-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1581092924735-0ce181361fb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            "
+          >
+            <div class="course-badge">Level 3</div>
+          </div>
+          <div class="course-content">
+            <h3>OTHM Level 3 (Occupational Health & Safety)</h3>
+            <p>
+              Develop essential knowledge and skills required to ensure safe
+              working environments aligned with international HSE standards.
+            </p>
+            <ul class="course-features">
+              <li><i class="fas fa-check"></i> Workplace Safety Principles</li>
+              <li><i class="fas fa-check"></i> Risk Assessment Techniques</li>
+              <li>
+                <i class="fas fa-check"></i> Accident Prevention & Investigation
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Fire Safety & Emergency Response
+              </li>
+              <li>
+                <i class="fas fa-check"></i> International Safety Regulations
+              </li>
+            </ul>
+            <button
+              class="enroll-btn"
+              onclick="enrollCourse('OTHM Level 3 Occupational Health & Safety')"
+            >
+              <i class="fas fa-rocket"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- IOSH Managing Safely (UK) Course Card -->
+        <div class="course-card">
+          <div
+            class="course-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1581091012184-7f3c96e8c38a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            "
+          >
+            <div class="course-badge">UK Certified</div>
+          </div>
+          <div class="course-content">
+            <h3>IOSH Managing Safely (UK)</h3>
+            <p>
+              Learn practical health and safety management skills designed for
+              supervisors and managers across all types of workplaces.
+            </p>
+            <ul class="course-features">
+              <li>
+                <i class="fas fa-check"></i> Risk Assessment & Hazard Control
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Roles & Responsibilities of
+                Managers
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Incident Investigation & Reporting
+              </li>
+              <li><i class="fas fa-check"></i> Performance Monitoring</li>
+              <li>
+                <i class="fas fa-check"></i> International HSE Best Practices
+              </li>
+            </ul>
+            <button
+              class="enroll-btn"
+              onclick="enrollCourse('IOSH Managing Safely (UK)')"
+            >
+              <i class="fas fa-rocket"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- OSHA (USA) Workplace Safety Course Card -->
+        <div class="course-card">
+          <div
+            class="course-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1581092334506-5c802c6d6b62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            "
+          >
+            <div class="course-badge">USA Safety</div>
+          </div>
+          <div class="course-content">
+            <h3>OSHA (USA) Workplace Safety</h3>
+            <p>
+              Learn essential occupational safety standards and compliance
+              procedures recognized across industries in the United States.
+            </p>
+            <ul class="course-features">
+              <li>
+                <i class="fas fa-check"></i> OSHA Regulations & Compliance
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Workplace Hazard Identification
+              </li>
+              <li><i class="fas fa-check"></i> PPE & Safety Controls</li>
+              <li>
+                <i class="fas fa-check"></i> Emergency Response & Evacuation
+              </li>
+              <li><i class="fas fa-check"></i> Reporting & Documentation</li>
+            </ul>
+            <button
+              class="enroll-btn"
+              onclick="enrollCourse('OSHA Workplace Safety (USA)')"
+            >
+              <i class="fas fa-rocket"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- HSE Officer (Pakistan) Course Card -->
+        <div class="course-card">
+          <div
+            class="course-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1581091012191-2457dc8c62be?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            "
+          >
+            <div class="course-badge">Pakistan</div>
+          </div>
+          <div class="course-content">
+            <h3>HSE Officer (Pakistan)</h3>
+            <p>
+              Become a certified Health, Safety and Environment professional
+              equipped to ensure workplace safety across industries in Pakistan.
+            </p>
+            <ul class="course-features">
+              <li><i class="fas fa-check"></i> Health & Safety Fundamentals</li>
+              <li>
+                <i class="fas fa-check"></i> Hazard Identification & Control
+              </li>
+              <li><i class="fas fa-check"></i> Workplace Safety Procedures</li>
+              <li>
+                <i class="fas fa-check"></i> Fire Safety & First Aid Basics
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Safety Documentation & Reporting
+              </li>
+            </ul>
+            <button
+              class="enroll-btn"
+              onclick="enrollCourse('HSE Officer Pakistan')"
+            >
+              <i class="fas fa-rocket"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Safety Inspector (Pakistan) Course Card -->
+        <div class="course-card">
+          <div
+            class="course-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            "
+          >
+            <div class="course-badge">Pakistan</div>
+          </div>
+          <div class="course-content">
+            <h3>Safety Inspector (Pakistan)</h3>
+            <p>
+              Gain the professional inspection skills required to monitor
+              workplace safety compliance and enforce hazard control practices
+              in Pakistan.
+            </p>
+            <ul class="course-features">
+              <li><i class="fas fa-check"></i> Safety Inspection Procedures</li>
+              <li><i class="fas fa-check"></i> Workplace Hazard Detection</li>
+              <li>
+                <i class="fas fa-check"></i> PPE & Safety Protocol Monitoring
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Compliance with Local Regulations
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Inspection Reporting & Follow-ups
+              </li>
+            </ul>
+            <button
+              class="enroll-btn"
+              onclick="enrollCourse('Safety Inspector Pakistan')"
+            >
+              <i class="fas fa-rocket"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Civil Surveyor (Pakistan) Course Card -->
+        <div class="course-card">
+          <div
+            class="course-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            "
+          >
+            <div class="course-badge">Pakistan</div>
+          </div>
+          <div class="course-content">
+            <h3>Civil Surveyor (Pakistan)</h3>
+            <p>
+              Build expertise in land surveying, construction site measurement,
+              and mapping techniques used across Pakistan’s civil engineering
+              projects.
+            </p>
+            <ul class="course-features">
+              <li><i class="fas fa-check"></i> Land Surveying Techniques</li>
+              <li>
+                <i class="fas fa-check"></i> Total Station & Auto Level Use
+              </li>
+              <li><i class="fas fa-check"></i> Mapping & Site Layout</li>
+              <li>
+                <i class="fas fa-check"></i> Construction Measurement Skills
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Survey Reports & Documentation
+              </li>
+            </ul>
+            <button
+              class="enroll-btn"
+              onclick="enrollCourse('Civil Surveyor Pakistan')"
+            >
+              <i class="fas fa-rocket"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- AutoCAD (2D & 3D) Course Card -->
+        <div class="course-card">
+          <div
+            class="course-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            "
+          >
+            <div class="course-badge">Design</div>
+          </div>
+          <div class="course-content">
+            <h3>AutoCAD (2D & 3D)</h3>
+            <p>
+              Master professional drafting and 3D modeling skills required in
+              engineering, architecture, and construction design industries.
+            </p>
+            <ul class="course-features">
+              <li><i class="fas fa-check"></i> 2D Drafting Essentials</li>
+              <li><i class="fas fa-check"></i> 3D Modeling Techniques</li>
+              <li><i class="fas fa-check"></i> Technical Drawing Standards</li>
+              <li><i class="fas fa-check"></i> Layers, Dimensions & Layouts</li>
+              <li><i class="fas fa-check"></i> Practical Project Work</li>
+            </ul>
+            <button class="enroll-btn" onclick="enrollCourse('AutoCAD 2D 3D')">
+              <i class="fas fa-rocket"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Quantity Surveyor (QS) Course Card -->
+        <div class="course-card">
+          <div
+            class="course-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1581093588401-22e6a9c1ac38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            "
+          >
+            <div class="course-badge">Construction</div>
+          </div>
+          <div class="course-content">
+            <h3>Quantity Surveyor (QS)</h3>
+            <p>
+              Become a skilled Quantity Surveyor with expertise in cost
+              estimation, BOQ preparation, and project measurement for
+              construction works in Pakistan.
+            </p>
+            <ul class="course-features">
+              <li><i class="fas fa-check"></i> Cost Estimation Techniques</li>
+              <li>
+                <i class="fas fa-check"></i> BOQ Preparation & Rate Analysis
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Reading Civil Drawings & Plans
+              </li>
+              <li><i class="fas fa-check"></i> Material Calculations</li>
+              <li><i class="fas fa-check"></i> Real Project Based Training</li>
+            </ul>
+            <button
+              class="enroll-btn"
+              onclick="enrollCourse('Quantity Surveyor (QS)')"
+            >
+              <i class="fas fa-rocket"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center">
+        <a href="index.html" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+      </div>
+    </div>
+
+    <script>
+      function enrollCourse(courseName) {
+        const message = `I'm interested in ${courseName} course at National College of Technology`;
+        const whatsappUrl = `https://wa.me/923167772003?text=${encodeURIComponent(
+          message
+        )}`;
+        window.open(whatsappUrl, "_blank");
+      }
+
+      // Additional animation on scroll
+      document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".course-card");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.animation = `fadeInUp 0.6s ease-out forwards`;
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        cards.forEach((card) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(30px)";
+          observer.observe(card);
+        });
+      });
+    </script>
+  </body>
+</html>

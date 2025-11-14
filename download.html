@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Downloads - National College of Technology</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #1a2c5f;
+        --secondary: #f8a31b;
+        --light: #f5f5f5;
+        --dark: #333;
+        --white: #fff;
+        --accent: #2c3e50;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background-color: #f8f9fa;
+        min-height: 100vh;
+      }
+      /* Header */
+      header {
+        background-color: transparent;
+        padding: 12px 0;
+        position: relative;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        height: 100px;
+      }
+
+      /* Enhanced Hero Section */
+      .hero-section {
+        height: 90vh;
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url("https://img.lovepik.com/bg/20240124/Download-HD-Wallpaper-The-Best-Modern-Wallpapers-with-Colorful-Light_3022379_wh1200.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        margin-top: -144px;
+      }
+
+      .hero-content {
+        color: var(--white);
+        z-index: 2;
+        max-width: 800px;
+        padding: 0 20px;
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease-out 0.5s forwards;
+      }
+
+      .hero-description {
+        font-size: 1.2rem;
+        text-align: center;
+        line-height: 1.6;
+        margin-bottom: 2.5rem;
+        opacity: 0.9;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease-out 0.8s forwards;
+      }
+
+      /* Floating elements */
+      .floating-shapes {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+      }
+
+      .shape {
+        position: absolute;
+        background: rgba(248, 163, 27, 0.1);
+        border-radius: 50%;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .shape:nth-child(1) {
+        width: 80px;
+        height: 80px;
+        top: 20%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .shape:nth-child(2) {
+        width: 120px;
+        height: 120px;
+        top: 60%;
+        right: 10%;
+        animation-delay: 2s;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 20px;
+      }
+
+      /* Downloads Categories Section */
+      .categories-section {
+        margin-bottom: 60px;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-title h2 {
+        color: var(--primary);
+        font-size: 2rem;
+        margin-bottom: 15px;
+        font-weight: bolder;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease-out forwards;
+      }
+
+      .section-title p {
+        color: #666;
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 30px;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease-out 0.3s forwards;
+      }
+
+      .categories-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .category-card {
+        background: var(--white);
+        border-radius: 15px;
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border-top: 5px solid var(--secondary);
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease-out forwards;
+      }
+
+      .category-card:nth-child(1) {
+        animation-delay: 0.4s;
+      }
+      .category-card:nth-child(2) {
+        animation-delay: 0.6s;
+      }
+      .category-card:nth-child(3) {
+        animation-delay: 0.8s;
+      }
+
+      .category-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .category-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: 2rem;
+        margin: 0 auto 25px;
+        transition: all 0.3s ease;
+      }
+
+      .category-card:hover .category-icon {
+        background: var(--secondary);
+        transform: scale(1.1);
+      }
+
+      .category-card h3 {
+        color: var(--primary);
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .category-card p {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 25px;
+        text-align: center;
+      }
+
+      .category-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 25px;
+        background: var(--primary);
+        color: var(--white);
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .category-btn:hover {
+        background: var(--secondary);
+        transform: translateY(-2px);
+      }
+
+      /* Downloads Grid Section */
+      .downloads-section {
+        background: var(--white);
+        border-radius: 20px;
+        padding: 60px 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        margin-bottom: 60px;
+      }
+
+      .downloads-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 25px;
+        margin-top: 40px;
+      }
+
+      .download-card {
+        background: var(--light);
+        border-radius: 12px;
+        padding: 30px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease-out forwards;
+      }
+
+      .download-card:nth-child(1) {
+        animation-delay: 0.5s;
+      }
+      .download-card:nth-child(2) {
+        animation-delay: 0.6s;
+      }
+      .download-card:nth-child(3) {
+        animation-delay: 0.7s;
+      }
+      .download-card:nth-child(4) {
+        animation-delay: 0.8s;
+      }
+      .download-card:nth-child(5) {
+        animation-delay: 0.9s;
+      }
+      .download-card:nth-child(6) {
+        animation-delay: 1s;
+      }
+
+      .download-card:hover {
+        border-color: var(--secondary);
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      }
+
+      .download-icon {
+        width: 70px;
+        height: 70px;
+        background: var(--primary);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: 1.8rem;
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+      }
+
+      .download-card:hover .download-icon {
+        background: var(--secondary);
+        transform: rotate(5deg) scale(1.1);
+      }
+
+      .download-content {
+        flex: 1;
+      }
+
+      .download-content h3 {
+        color: var(--primary);
+        margin-bottom: 8px;
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+
+      .download-content p {
+        color: #666;
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+
+      .file-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+
+      .file-size {
+        color: #888;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .file-type {
+        background: var(--primary);
+        color: var(--white);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .download-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        background: var(--secondary);
+        color: var(--white);
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+      }
+
+      .download-btn:hover {
+        background: #e5940e;
+        transform: translateY(-2px);
+      }
+
+      /* Quick Links Section */
+      .quick-links {
+        background: var(--primary);
+        color: var(--white);
+        padding: 50px 40px;
+        border-radius: 15px;
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .quick-links h2 {
+        font-size: 2.2rem;
+        margin-bottom: 30px;
+        font-weight: 600;
+      }
+
+      .links-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .quick-link {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 25px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: var(--white);
+      }
+
+      .quick-link:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-5px);
+      }
+
+      .quick-link i {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        display: block;
+      }
+
+      .quick-link span {
+        font-weight: 500;
+      }
+
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 35px;
+        background: var(--primary);
+        color: var(--white);
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        margin-top: 30px;
+      }
+
+      .back-btn:hover {
+        background: #15234a;
+        transform: translateY(-2px);
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .hero-description {
+          font-size: 1.2rem;
+        }
+
+        .categories-grid,
+        .downloads-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-title h2 {
+          font-size: 2.2rem;
+        }
+
+        .downloads-section {
+          padding: 40px 25px;
+        }
+
+        .download-card {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .links-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-section {
+          height: 50vh;
+        }
+
+        .hero-title {
+          font-size: 2rem;
+        }
+
+        .container {
+          padding: 40px 15px;
+        }
+
+        .quick-links {
+          padding: 40px 25px;
+        }
+
+        .links-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="SO/style.css">
+  </head>
+  <body>
+    <!-- Header & Navigation -->
+    <header>
+      <div class="container nav-container">
+        <div class="logo">
+          <img src="PIC/Logo.png" alt="NCT Logo" />
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown-parent">
+            <a href="#"
+              >Academic Programs <i class="fas fa-chevron-down"></i
+            ></a>
+            <ul class="dropdown">
+              <li class="nested-dropdown-parent">
+                <a href="IT.html"
+                  >IT Courses <i class="fas fa-chevron-right"></i
+                ></a>
+                <ul class="nested-dropdown">
+                  <li><a href="#">Web Development</a></li>
+                  <li><a href="#">Graphic Designing</a></li>
+                  <li><a href="#">Computer Application</a></li>
+                  <li><a href="#">Data Entry Operator</a></li>
+                  <li><a href="#">Python Programming</a></li>
+                  <li><a href="#">Office Management</a></li>
+                  <li><a href="#">Computerized Accounting</a></li>
+                  <li><a href="#">Blogging</a></li>
+                  <li><a href="#">Web Designing</a></li>
+                  <li><a href="#">Shorthand</a></li>
+                  <li><a href="#">Photography</a></li>
+                  <li><a href="#">Video Editing</a></li>
+                </ul>
+              </li>
+              <li class="nested-dropdown-parent">
+                <a href="Ecom.html"
+                  >Regular E-Commerce Courses
+                  <i class="fas fa-chevron-right"></i
+                ></a>
+                <ul class="nested-dropdown">
+                  <li><a href="#">Digital Marketing</a></li>
+                  <li><a href="#">Shopify Development</a></li>
+                  <li><a href="#">Freelancing</a></li>
+                  <li><a href="#">E-Commerce</a></li>
+                  <li><a href="#">Amazon Virtual Assistant</a></li>
+                </ul>
+              </li>
+              <li class="nested-dropdown-parent">
+                <a href="C.html"
+                  >Regular Civil Courses <i class="fas fa-chevron-right"></i
+                ></a>
+                <ul class="nested-dropdown">
+                  <li><a href="#">NEBOSH </a></li>
+                  <li><a href="#">OTHM (Level-3)</a></li>
+                  <li><a href="#">IOSH Managing Safely (UK)</a></li>
+                  <li><a href="#">OSHA (USA) Workplace Safety</a></li>
+                  <li><a href="#">HSE Officer (Pakistan)</a></li>
+                  <li><a href="#">Safety Inspector (Pakistan)</a></li>
+                  <li><a href="#">Civil Surveyor (Pakistan)</a></li>
+                  <li><a href="#">AutoCAD (2D & 3D)</a></li>
+                  <li><a href="#">Quantity Surveyor (QS)</a></li>
+                </ul>
+              </li>
+              <li class="nested-dropdown-parent">
+                <a href="Comp.html"
+                  >Competency Based Diplomas <i class="fas fa-chevron-right"></i
+                ></a>
+                <ul class="nested-dropdown">
+                  <li><a href="#">Graphic Design</a></li>
+                  <li><a href="#">Safety Management</a></li>
+                  <li><a href="#">Project Management</a></li>
+                  <li><a href="#">Communication Skills</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="admission.html">Admission</a></li>
+          <li><a href="#">Curriculum</a></li>
+          <li><a href="download.html">Downloads</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+
+        <div class="hamburger">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </header>
+    <!-- Enhanced Hero Section -->
+    <section class="hero-section">
+      <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+      </div>
+      <div class="hero-content">
+        <h1 class="hero-title">Downloads Center</h1>
+        <p class="hero-description">
+          Access all important documents, forms, and resources in one place.
+          Everything you need for your academic journey.
+        </p>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- Categories Section -->
+      <section class="categories-section">
+        <div class="section-title">
+          <h2>Browse by Category</h2>
+          <p>Find documents organized by categories for easy access</p>
+        </div>
+
+        <div class="categories-grid">
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-user-graduate"></i>
+            </div>
+            <h3>Admission Forms</h3>
+            <p>All admission-related forms and applications for new students</p>
+            <a href="#admission-downloads" class="category-btn">
+              <i class="fas fa-arrow-right"></i> Browse Files
+            </a>
+          </div>
+
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-file-contract"></i>
+            </div>
+            <h3>Academic Documents</h3>
+            <p>Course outlines, syllabi, and academic regulations</p>
+            <a href="#academic-downloads" class="category-btn">
+              <i class="fas fa-arrow-right"></i> Browse Files
+            </a>
+          </div>
+
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-clipboard-list"></i>
+            </div>
+            <h3>Administrative Forms</h3>
+            <p>
+              Leave applications, fee structures, and administrative documents
+            </p>
+            <a href="#admin-downloads" class="category-btn">
+              <i class="fas fa-arrow-right"></i> Browse Files
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Downloads Grid Section -->
+      <section id="admission-downloads" class="downloads-section">
+        <div class="section-title">
+          <h2>Admission Documents</h2>
+          <p>Essential forms and documents for the admission process</p>
+        </div>
+
+        <div class="downloads-grid">
+          <!-- Admission Form -->
+          <div class="download-card">
+            <div class="download-icon">
+              <i class="fas fa-file-alt"></i>
+            </div>
+            <div class="download-content">
+              <h3>Admission Application Form</h3>
+              <p>
+                Complete admission application form for all programs and courses
+              </p>
+              <div class="file-info">
+                <span class="file-size">
+                  <i class="fas fa-file-pdf"></i> PDF - 2.4 MB
+                </span>
+                <span class="file-type">Form</span>
+              </div>
+              <a href="pdfs/admission-form.pdf" class="download-btn" download>
+                <i class="fas fa-download"></i> Download
+              </a>
+            </div>
+          </div>
+
+          <!-- Prospectus -->
+          <div class="download-card">
+            <div class="download-icon">
+              <i class="fas fa-book-open"></i>
+            </div>
+            <div class="download-content">
+              <h3>College Prospectus</h3>
+              <p>
+                Complete college prospectus with course details and facilities
+              </p>
+              <div class="file-info">
+                <span class="file-size">
+                  <i class="fas fa-file-pdf"></i> PDF - 5.7 MB
+                </span>
+                <span class="file-type">Brochure</span>
+              </div>
+              <a href="pdfs/prospectus.pdf" class="download-btn" download>
+                <i class="fas fa-download"></i> Download
+              </a>
+            </div>
+          </div>
+
+          <!-- Fee Structure -->
+          <div class="download-card">
+            <div class="download-icon">
+              <i class="fas fa-money-bill-wave"></i>
+            </div>
+            <div class="download-content">
+              <h3>Fee Structure 2024</h3>
+              <p>Detailed fee breakdown for all courses and programs</p>
+              <div class="file-info">
+                <span class="file-size">
+                  <i class="fas fa-file-pdf"></i> PDF - 1.2 MB
+                </span>
+                <span class="file-type">Financial</span>
+              </div>
+              <a href="pdfs/fee-structure.pdf" class="download-btn" download>
+                <i class="fas fa-download"></i> Download
+              </a>
+            </div>
+          </div>
+
+          <!-- Scholarship Form -->
+          <div class="download-card">
+            <div class="download-icon">
+              <i class="fas fa-award"></i>
+            </div>
+            <div class="download-content">
+              <h3>Scholarship Application</h3>
+              <p>Application form for merit and need-based scholarships</p>
+              <div class="file-info">
+                <span class="file-size">
+                  <i class="fas fa-file-pdf"></i> PDF - 1.8 MB
+                </span>
+                <span class="file-type">Form</span>
+              </div>
+              <a href="pdfs/scholarship-form.pdf" class="download-btn" download>
+                <i class="fas fa-download"></i> Download
+              </a>
+            </div>
+          </div>
+
+          <!-- Hostel Form -->
+          <div class="download-card">
+            <div class="download-icon">
+              <i class="fas fa-bed"></i>
+            </div>
+            <div class="download-content">
+              <h3>Hostel Application</h3>
+              <p>Hostel accommodation application form and rules</p>
+              <div class="file-info">
+                <span class="file-size">
+                  <i class="fas fa-file-pdf"></i> PDF - 1.5 MB
+                </span>
+                <span class="file-type">Form</span>
+              </div>
+              <a
+                href="pdfs/hostel-application.pdf"
+                class="download-btn"
+                download
+              >
+                <i class="fas fa-download"></i> Download
+              </a>
+            </div>
+          </div>
+
+          <!-- Rules & Regulations -->
+          <div class="download-card">
+            <div class="download-icon">
+              <i class="fas fa-gavel"></i>
+            </div>
+            <div class="download-content">
+              <h3>Rules & Regulations</h3>
+              <p>Complete college rules, policies and code of conduct</p>
+              <div class="file-info">
+                <span class="file-size">
+                  <i class="fas fa-file-pdf"></i> PDF - 3.2 MB
+                </span>
+                <span class="file-type">Policy</span>
+              </div>
+              <a
+                href="pdfs/rules-regulations.pdf"
+                class="download-btn"
+                download
+              >
+                <i class="fas fa-download"></i> Download
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Links Section -->
+      <section class="quick-links">
+        <h2>Quick Access</h2>
+        <div class="links-grid">
+          <a href="admission.html" class="quick-link">
+            <i class="fas fa-user-graduate"></i>
+            <span>Admission Process</span>
+          </a>
+          <a href="IT.html" class="quick-link">
+            <i class="fas fa-laptop-code"></i>
+            <span>Our Courses</span>
+          </a>
+          <a href="contact.html" class="quick-link">
+            <i class="fas fa-phone-alt"></i>
+            <span>Contact Us</span>
+          </a>
+          <a href="index.html" class="quick-link">
+            <i class="fas fa-home"></i>
+            <span>Home Page</span>
+          </a>
+        </div>
+      </section>
+
+      <div style="text-align: center;">
+        <a href="index.html" class="back-btn" style="margin-bottom: 100px;">
+          <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+      </div>
+    </div>
+
+    <script>
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Download tracking
+      document.querySelectorAll(".download-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          const fileName = this.parentElement.querySelector("h3").textContent;
+          console.log(`Downloaded: ${fileName}`);
+        });
+      });
+    </script>
+    <script src="SO/script.js"></script>
+  </body>
+</html>

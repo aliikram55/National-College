@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Regular IT Courses - National College of Technology</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #1a2c5f;
+      --secondary: #f8a31b;
+      --light: #f5f5f5;
+      --dark: #333;
+      --white: #fff;
+      --accent: #2c3e50;
+      --gradient: linear-gradient(135deg, #1a2c5f 0%, #2c3e50 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section with Animation */
+    .hero-section {
+      height: 60vh;
+      background: linear-gradient(rgba(26, 44, 95, 0.8),
+          rgba(44, 62, 80, 0.9)),
+        url("https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      color: var(--white);
+      z-index: 2;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-content h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+      animation: slideInFromTop 1s ease-out;
+    }
+
+    .hero-content p {
+      font-size: 1.4rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+      opacity: 0.9;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    /* Floating elements animation */
+    .floating-elements {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    .floating-element {
+      position: absolute;
+      background: rgba(248, 163, 27, 0.1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .floating-element:nth-child(1) {
+      width: 80px;
+      height: 80px;
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .floating-element:nth-child(2) {
+      width: 120px;
+      height: 120px;
+      top: 60%;
+      right: 10%;
+      animation-delay: 2s;
+    }
+
+    .floating-element:nth-child(3) {
+      width: 60px;
+      height: 60px;
+      bottom: 20%;
+      left: 20%;
+      animation-delay: 4s;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    /* Modern Card Design */
+    .course-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .course-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg,
+          rgba(26, 44, 95, 0.1) 0%,
+          rgba(248, 163, 27, 0.05) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 1;
+    }
+
+    .course-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .course-card:hover::before {
+      opacity: 1;
+    }
+
+    .course-image {
+      height: 240px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .course-image::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 70%;
+      background: linear-gradient(to top,
+          rgba(26, 44, 95, 0.9) 0%,
+          transparent 100%);
+    }
+
+    .course-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--secondary);
+      color: var(--white);
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      z-index: 2;
+      box-shadow: 0 5px 15px rgba(248, 163, 27, 0.3);
+    }
+
+    .course-content {
+      padding: 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .course-content h3 {
+      color: var(--primary);
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .course-content p {
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 25px;
+      font-size: 0.95rem;
+    }
+
+    .course-features {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+
+    .course-features li {
+      padding: 10px 0;
+      color: #555;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .course-features li:hover {
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .course-features li:last-child {
+      border-bottom: none;
+    }
+
+    .course-features li i {
+      color: var(--secondary);
+      margin-right: 12px;
+      font-size: 14px;
+      background: rgba(248, 163, 27, 0.1);
+      padding: 8px;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .course-features li:hover i {
+      background: var(--secondary);
+      color: var(--white);
+      transform: scale(1.1);
+    }
+
+    .enroll-btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: var(--gradient);
+      color: var(--white);
+      text-align: center;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .enroll-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent);
+      transition: left 0.5s;
+    }
+
+    .enroll-btn:hover {
+      background: linear-gradient(135deg, #15234a 0%, #243447 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(26, 44, 95, 0.3);
+    }
+
+    .enroll-btn:hover::before {
+      left: 100%;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 35px;
+      background: var(--primary);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+      box-shadow: 0 5px 15px rgba(26, 44, 95, 0.2);
+    }
+
+    .back-btn:hover {
+      background: #15234a;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(26, 44, 95, 0.3);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInFromTop {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 0.9;
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-content p {
+        font-size: 1.1rem;
+      }
+
+      .courses-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .course-card {
+        margin: 0 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-section {
+        height: 50vh;
+      }
+
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .container {
+        padding: 40px 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Animated Hero Section -->
+  <section class="hero-section">
+    <div class="floating-elements">
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+    </div>
+    <div class="hero-content">
+      <h1>Regular IT Courses</h1>
+      <p>
+        Master cutting-edge technologies and programming languages with our
+        comprehensive IT curriculum designed for the digital age
+      </p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="courses-grid">
+      <!-- Web Development Card -->
+      <div class="course-card">
+        <div class="course-image" style="
+              background-image: url('https://aoasoftwaresolution.com/wp-content/uploads/2023/06/wde.jpg');
+            ">
+          <div class="course-badge">Popular</div>
+        </div>
+        <div class="course-content">
+          <h3>Web Development</h3>
+          <p>
+            Build modern, responsive websites and web applications using the
+            latest technologies including HTML5, CSS3, JavaScript, React, and
+            Node.js.
+          </p>
+          <ul class="course-features">
+            <li><i class="fas fa-check"></i> Full Stack Development</li>
+            <li><i class="fas fa-check"></i> React.js & Vue.js</li>
+            <li><i class="fas fa-check"></i> RESTful APIs</li>
+            <li><i class="fas fa-check"></i> Database Integration</li>
+            <li><i class="fas fa-check"></i> Deployment & DevOps</li>
+          </ul>
+          <button class="enroll-btn" onclick="enrollCourse('Web Development')">
+            <i class="fas fa-rocket"></i> Enroll Now
+          </button>
+        </div>
+      </div>
+
+      <!-- Graphic Designing Card -->
+      <div class="course-card">
+        <div class="course-image" style="
+              background-image: url('https://i.pinimg.com/736x/7f/32/0a/7f320aad80ace1060a8f59165449c438.jpg');
+            ">
+          <div class="course-badge">Creative</div>
+        </div>
+        <div class="course-content">
+          <h3>Graphic Designing</h3>
+          <p>
+            Learn to create stunning visuals using modern design tools and
+            principles. Master typography, color theory, branding, and digital
+            illustration for professional design projects.
+          </p>
+          <ul class="course-features">
+            <li>
+              <i class="fas fa-check"></i> Adobe Photoshop & Illustrator
+            </li>
+            <li><i class="fas fa-check"></i> Logo & Branding Design</li>
+            <li><i class="fas fa-check"></i> Typography & Color Theory</li>
+            <li><i class="fas fa-check"></i> Layout & Composition</li>
+            <li><i class="fas fa-check"></i> Digital & Print Media Design</li>
+          </ul>
+          <button class="enroll-btn" onclick="enrollCourse('Graphic Designing')">
+            <i class="fas fa-rocket"></i> Enroll Now
+          </button>
+        </div>
+      </div>
+
+      <!-- Computer Application Card -->
+      <div class="course-card">
+        <div class="course-image" style="
+      background-image: url('https://www.learningroutes.in/_next/image?url=https%3A%2F%2Faskusedu.com%2Fblogdashboard%2Fwp-content%2Fuploads%2F2024%2F12%2Fbusiness.jpg&w=1920&q=75');
+    ">
+          <div class="course-badge">Essential</div>
+        </div>
+        <div class="course-content">
+          <h3>Computer Application</h3>
+          <p>
+            Gain hands-on skills in computer fundamentals, office applications, and
+            software tools. Learn to use Word, Excel, PowerPoint, and basic
+            programming for practical, everyday computer use.
+          </p>
+          <ul class="course-features">
+            <li><i class="fas fa-check"></i> MS Office (Word, Excel, PowerPoint)</li>
+            <li><i class="fas fa-check"></i> Internet & Email Skills</li>
+            <li><i class="fas fa-check"></i> Computer Fundamentals</li>
+            <li><i class="fas fa-check"></i> File Management & Data Handling</li>
+            <li><i class="fas fa-check"></i> Introduction to Programming</li>
+          </ul>
+          <button class="enroll-btn" onclick="enrollCourse('Computer Application')">
+            <i class="fas fa-rocket"></i> Enroll Now
+          </button>
+        </div>
+      </div>
+
+      <!-- Data Entry Operator Card -->
+      <div class="course-card">
+        <div class="course-image" style="
+      background-image: url('https://www.totaljobs.com/advice/wp-content/uploads/Data-Entry-job-description_5352906.jpg');
+    ">
+          <div class="course-badge">Professional</div>
+        </div>
+        <div class="course-content">
+          <h3>Data Entry Operator</h3>
+          <p>
+            Learn the essential computer and data handling skills required for office
+            and administrative jobs. Master typing, spreadsheets, data management,
+            and record keeping efficiently.
+          </p>
+          <ul class="course-features">
+            <li><i class="fas fa-check"></i> MS Excel & Google Sheets</li>
+            <li><i class="fas fa-check"></i> Fast & Accurate Typing</li>
+            <li><i class="fas fa-check"></i> Data Cleaning & Formatting</li>
+            <li><i class="fas fa-check"></i> File & Record Management</li>
+            <li><i class="fas fa-check"></i> Office Documentation Skills</li>
+          </ul>
+          <button class="enroll-btn" onclick="enrollCourse('Data Entry Operator')">
+            <i class="fas fa-rocket"></i> Enroll Now
+          </button>
+        </div>
+      </div>
+
+      <!-- Python Programming Card -->
+      <div class="course-card">
+        <div class="course-image" style="
+      background-image: url('https://admin.wac.co/uploads/Features_Of_Python_1_f4ccd6d9f7.jpg');
+    ">
+          <div class="course-badge">Trending</div>
+        </div>
+        <div class="course-content">
+          <h3>Python Programming</h3>
+          <p>
+            Learn Python from the ground up — from basic syntax to advanced concepts like
+            object-oriented programming, data handling, and automation for real-world projects.
+          </p>
+          <ul class="course-features">
+            <li><i class="fas fa-check"></i> Python Basics & Syntax</li>
+            <li><i class="fas fa-check"></i> Object-Oriented Programming</li>
+            <li><i class="fas fa-check"></i> File Handling & Data Structures</li>
+            <li><i class="fas fa-check"></i> Automation & Scripting</li>
+            <li><i class="fas fa-check"></i> Web & Data Applications</li>
+          </ul>
+          <button class="enroll-btn" onclick="enrollCourse('Python Programming')">
+            <i class="fas fa-rocket"></i> Enroll Now
+          </button>
+        </div>
+      </div>
+
+      <!-- Office Management Card -->
+      <div class="course-card">
+        <div class="course-image" style="
+      background-image: url('https://www.skillsyouneed.com/images/rhubarb/office-meeting.jpg');
+    ">
+          <div class="course-badge">Professional</div>
+        </div>
+        <div class="course-content">
+          <h3>Office Management</h3>
+          <p>
+            Develop essential administrative, organizational, and communication skills
+            to manage office operations efficiently. Learn document handling, staff coordination,
+            and business communication techniques.
+          </p>
+          <ul class="course-features">
+            <li><i class="fas fa-check"></i> Office Administration</li>
+            <li><i class="fas fa-check"></i> Document & Record Management</li>
+            <li><i class="fas fa-check"></i> Business Communication</li>
+            <li><i class="fas fa-check"></i> Time & Task Management</li>
+            <li><i class="fas fa-check"></i> Professional Etiquette</li>
+          </ul>
+          <button class="enroll-btn" onclick="enrollCourse('Office Management')">
+            <i class="fas fa-rocket"></i> Enroll Now
+          </button>
+        </div>
+      </div>
+
+
+
+
+      <!-- Computerized Accounting Card -->
+      <div class="course-card">
+        <div class="course-image" style="
+      background-image: url('https://royalacademyof.me/wp-content/uploads/2023/05/computerized-accounting-uae.jpg');
+    " role="img" aria-label="Laptop showing accounting software interface">
+          <div class="course-badge">Professional</div>
+        </div>
+        <div class="course-content">
+          <h3>Computerized Accounting</h3>
+          <p>
+            Learn bookkeeping and accounting using modern accounting software.
+            Master digital ledger management, invoicing, payroll processing, and financial reporting
+            for small to medium businesses.
+          </p>
+          <ul class="course-features">
+            <li><i class="fas fa-check"></i> Accounting Software (e.g., QuickBooks)</li>
+            <li><i class="fas fa-check"></i> Digital Bookkeeping & Ledgers</li>
+            <li><i class="fas fa-check"></i> Invoicing & Receivables</li>
+            <li><i class="fas fa-check"></i> Payroll & Tax Basics</li>
+            <li><i class="fas fa-check"></i> Financial Reports & Analysis</li>
+          </ul>
+          <button class="enroll-btn" onclick="enrollCourse('Computerized Accounting')">
+            <i class="fas fa-rocket"></i> Enroll Now
+          </button>
+        </div>
+      </div>
+
+
+
+      <!-- Blogging Card -->
+      <div class="course-card">
+        <div class="course-image" style="
+      background-image: url('https://www.chitkara.edu.in/blogs/wp-content/uploads/2023/09/Blogging-in-Digital-Marketing.jpg');
+    " role="img" aria-label="Person typing on laptop creating blog content">
+          <div class="course-badge">Professional</div>
+        </div>
+        <div class="course-content">
+          <h3>Blogging</h3>
+          <p>
+            Learn how to start and grow a professional blog. Create engaging content,
+            optimize for SEO, monetize your site and build a strong online presence.
+          </p>
+          <ul class="course-features">
+            <li><i class="fas fa-check"></i> Content Writing & Strategy</li>
+            <li><i class="fas fa-check"></i> WordPress & Blog Setup</li>
+            <li><i class="fas fa-check"></i> SEO for Blogs</li>
+            <li><i class="fas fa-check"></i> Social Media & Branding</li>
+            <li><i class="fas fa-check"></i> Blog Monetization</li>
+          </ul>
+          <button class="enroll-btn" onclick="enrollCourse('Blogging')">
+            <i class="fas fa-rocket"></i> Enroll Now
+          </button>
+        </div>
+      </div>
+
+
+      <!-- Web Designing Card -->
+      <div class="course-card">
+        <div class="course-image" style="
+      background-image: url('https://img.freepik.com/premium-photo/web-design-team-work-project-concept-yellow-desk-with-web-design-text-top-view-flat-lay_176814-960.jpg?semt=ais_hybrid&w=740&q=80');
+    " role="img" aria-label="Designer working on web design layout">
+          <div class="course-badge">Professional</div>
+        </div>
+        <div class="course-content">
+          <h3>Web Designing</h3>
+          <p>
+            Learn to design beautiful and responsive websites using modern web
+            technologies. Master layout design, UI/UX basics and create professional
+            portfolio projects.
+          </p>
+          <ul class="course-features">
+            <li><i class="fas fa-check"></i> HTML & CSS Fundamentals</li>
+            <li><i class="fas fa-check"></i> Responsive Design</li>
+            <li><i class="fas fa-check"></i> UI/UX Basics</li>
+            <li><i class="fas fa-check"></i> Figma & Web Mockups</li>
+            <li><i class="fas fa-check"></i> Portfolio Website Creation</li>
+          </ul>
+          <button class="enroll-btn" onclick="enrollCourse('Web Designing')">
+            <i class="fas fa-rocket"></i> Enroll Now
+          </button>
+        </div>
+      </div>
+
+
+
+      <!-- Shorthand Course Card -->
+      <div class="course-card">
+        <div class="course-image" style="
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5XgCrq3kQcee0e67YfC6-07bQUTs3oeERsQ&s');
+    " role="img" aria-label="Notebook with shorthand writing practice">
+          <div class="course-badge">Professional</div>
+        </div>
+        <div class="course-content">
+          <h3>Shorthand</h3>
+          <p>
+            Learn fast writing skills used by office professionals for quick note-taking,
+            transcription and recording spoken information accurately.
+          </p>
+          <ul class="course-features">
+            <li><i class="fas fa-check"></i> Speed Writing Techniques</li>
+            <li><i class="fas fa-check"></i> Pitman or Gregg Basics</li>
+            <li><i class="fas fa-check"></i> Dictation Practice</li>
+            <li><i class="fas fa-check"></i> Transcription Skills</li>
+            <li><i class="fas fa-check"></i> Office & Reporting Use</li>
+          </ul>
+          <button class="enroll-btn" onclick="enrollCourse('Shorthand')">
+            <i class="fas fa-rocket"></i> Enroll Now
+          </button>
+        </div>
+      </div>
+
+
+      <!-- Photography Course Card -->
+      <div class="course-card">
+        <div class="course-image" style="
+      background-image: url('https://st2.depositphotos.com/1075946/10110/i/450/depositphotos_101105442-stock-photo-photographer-taking-picture-of-model.jpg');
+    " role="img" aria-label="Photographer taking a shot with a DSLR camera">
+          <div class="course-badge">Professional</div>
+        </div>
+        <div class="course-content">
+          <h3>Photography</h3>
+          <p>
+            Learn professional photography skills including camera handling,
+            lighting, composition and editing to capture stunning visuals.
+          </p>
+          <ul class="course-features">
+            <li><i class="fas fa-check"></i> DSLR & Mobile Camera Skills</li>
+            <li><i class="fas fa-check"></i> Lighting & Composition</li>
+            <li><i class="fas fa-check"></i> Portrait & Product Photography</li>
+            <li><i class="fas fa-check"></i> Outdoor & Studio Shooting</li>
+            <li><i class="fas fa-check"></i> Photo Editing Basics</li>
+          </ul>
+          <button class="enroll-btn" onclick="enrollCourse('Photography')">
+            <i class="fas fa-rocket"></i> Enroll Now
+          </button>
+        </div>
+      </div>
+
+
+      <!-- Video Editing Course Card -->
+      <div class="course-card">
+        <div class="course-image" style="
+    background-image: url('https://www.vegascreativesoftware.com/fileadmin/user_upload/seo/keyword/best_professional_video_editing_software/i_d8a353/header-mobile.jpg');
+  " role="img" aria-label="Video editor working on a timeline in editing software">
+          <div class="course-badge">Professional</div>
+        </div>
+        <div class="course-content">
+          <h3>Video Editing</h3>
+          <p>
+            Master the art of video editing with modern tools and techniques to create
+            cinematic visuals for YouTube, events, and professional media.
+          </p>
+          <ul class="course-features">
+            <li><i class="fas fa-check"></i> Adobe Premiere Pro & CapCut Skills</li>
+            <li><i class="fas fa-check"></i> Cinematic Transitions & Effects</li>
+            <li><i class="fas fa-check"></i> Audio Syncing & Sound Editing</li>
+            <li><i class="fas fa-check"></i> Color Grading Techniques</li>
+            <li><i class="fas fa-check"></i> Export Settings for Social Media</li>
+          </ul>
+          <button class="enroll-btn" onclick="enrollCourse('Video Editing')">
+            <i class="fas fa-rocket"></i> Enroll Now
+          </button>
+        </div>
+      </div>
+
+
+
+
+    </div>
+    <div style="text-align: center">
+      <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i> Back to Home
+      </a>
+    </div>
+
+    <script>
+      function enrollCourse(courseName) {
+        const message = `I'm interested in ${courseName} course at National College of Technology`;
+        const whatsappUrl = `https://wa.me/923167772003?text=${encodeURIComponent(
+          message
+        )}`;
+        window.open(whatsappUrl, "_blank");
+      }
+
+      // Additional animation on scroll
+      document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".course-card");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.animation = `fadeInUp 0.6s ease-out forwards`;
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        cards.forEach((card) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(30px)";
+          observer.observe(card);
+        });
+      });
+    </script>
+</body>
+
+</html>

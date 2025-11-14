@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regular E-Commerce Courses - National College of Technology</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #1a2c5f;
+        --secondary: #f8a31b;
+        --light: #f5f5f5;
+        --dark: #333;
+        --white: #fff;
+        --accent: #2c3e50;
+        --gradient: linear-gradient(135deg, #1a2c5f 0%, #2c3e50 100%);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* Hero Section with Animation */
+      .hero-section {
+        height: 60vh;
+        background: linear-gradient(
+            rgba(26, 44, 95, 0.7),
+            rgba(44, 62, 80, 0.7)
+          ),
+          url("https://sina.edu.pk/wp-content/uploads/2022/06/E-Commerce-Course.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-content {
+        color: var(--white);
+        z-index: 2;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .hero-content h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        animation: slideInFromTop 1s ease-out;
+      }
+
+      .hero-content p {
+        font-size: 1.4rem;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
+        opacity: 0.9;
+        animation: fadeIn 1.5s ease-out;
+      }
+
+      /* Floating elements animation */
+      .floating-elements {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+      }
+
+      .floating-element {
+        position: absolute;
+        background: rgba(248, 163, 27, 0.1);
+        border-radius: 50%;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .floating-element:nth-child(1) {
+        width: 80px;
+        height: 80px;
+        top: 20%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .floating-element:nth-child(2) {
+        width: 120px;
+        height: 120px;
+        top: 60%;
+        right: 10%;
+        animation-delay: 2s;
+      }
+
+      .floating-element:nth-child(3) {
+        width: 60px;
+        height: 60px;
+        bottom: 20%;
+        left: 20%;
+        animation-delay: 4s;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 20px;
+      }
+
+      .courses-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 40px;
+        margin-bottom: 60px;
+      }
+
+      /* Modern Card Design */
+      .course-card {
+        background: var(--white);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .course-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(26, 44, 95, 0.1) 0%,
+          rgba(248, 163, 27, 0.05) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 1;
+      }
+
+      .course-card:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+      }
+
+      .course-card:hover::before {
+        opacity: 1;
+      }
+
+      .course-image {
+        height: 240px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .course-image::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        background: linear-gradient(
+          to top,
+          rgba(26, 44, 95, 0.9) 0%,
+          transparent 100%
+        );
+      }
+
+      .course-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: var(--secondary);
+        color: var(--white);
+        padding: 8px 16px;
+        border-radius: 25px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        z-index: 2;
+        box-shadow: 0 5px 15px rgba(248, 163, 27, 0.3);
+      }
+
+      .course-content {
+        padding: 30px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .course-content h3 {
+        color: var(--primary);
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+        font-weight: 700;
+      }
+
+      .course-content p {
+        color: #666;
+        line-height: 1.7;
+        margin-bottom: 25px;
+        font-size: 0.95rem;
+      }
+
+      .course-features {
+        list-style: none;
+        margin-bottom: 30px;
+      }
+
+      .course-features li {
+        padding: 10px 0;
+        color: #555;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .course-features li:hover {
+        color: var(--primary);
+        transform: translateX(5px);
+      }
+
+      .course-features li:last-child {
+        border-bottom: none;
+      }
+
+      .course-features li i {
+        color: var(--secondary);
+        margin-right: 12px;
+        font-size: 14px;
+        background: rgba(248, 163, 27, 0.1);
+        padding: 8px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      .course-features li:hover i {
+        background: var(--secondary);
+        color: var(--white);
+        transform: scale(1.1);
+      }
+
+      .enroll-btn {
+        display: block;
+        width: 100%;
+        padding: 16px;
+        background: var(--gradient);
+        color: var(--white);
+        text-align: center;
+        text-decoration: none;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .enroll-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .enroll-btn:hover {
+        background: linear-gradient(135deg, #15234a 0%, #243447 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(26, 44, 95, 0.3);
+      }
+
+      .enroll-btn:hover::before {
+        left: 100%;
+      }
+
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 35px;
+        background: var(--primary);
+        color: var(--white);
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin-top: 20px;
+        box-shadow: 0 5px 15px rgba(26, 44, 95, 0.2);
+      }
+
+      .back-btn:hover {
+        background: #15234a;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(26, 44, 95, 0.3);
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInFromTop {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 0.9;
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(180deg);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero-content p {
+          font-size: 1.1rem;
+        }
+
+        .courses-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .course-card {
+          margin: 0 10px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-section {
+          height: 50vh;
+        }
+
+        .hero-content h1 {
+          font-size: 2rem;
+        }
+
+        .container {
+          padding: 40px 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Animated Hero Section -->
+    <section class="hero-section">
+      <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+      </div>
+      <div class="hero-content">
+        <h1>E-Commerce Courses</h1>
+        <p>
+          Master online business strategies, digital marketing, and e-commerce
+          platform development to build successful online ventures
+        </p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="courses-grid">
+        <!-- Digital Marketing Card -->
+        <div class="course-card">
+          <div
+            class="course-image"
+            style="
+              background-image: url('https://s44783.pcdn.co/in/wp-content/uploads/sites/3/2023/03/How-to-Learn-Digital-Marketing.jpg.optimal.jpg');
+            "
+          >
+            <div class="course-badge">High Demand</div>
+          </div>
+          <div class="course-content">
+            <h3>Digital Marketing</h3>
+            <p>
+              Master comprehensive digital marketing strategies including SEO,
+              social media marketing, email campaigns, and PPC advertising to
+              drive business growth.
+            </p>
+            <ul class="course-features">
+              <li><i class="fas fa-check"></i> SEO & SEM Strategies</li>
+              <li><i class="fas fa-check"></i> Social Media Marketing</li>
+              <li><i class="fas fa-check"></i> Email Marketing</li>
+              <li><i class="fas fa-check"></i> Google Analytics</li>
+              <li><i class="fas fa-check"></i> Content Marketing</li>
+            </ul>
+            <button
+              class="enroll-btn"
+              onclick="enrollCourse('Digital Marketing')"
+            >
+              <i class="fas fa-rocket"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Shopify Development Card -->
+        <div class="course-card">
+          <div
+            class="course-image"
+            style="
+              background-image: url('https://www.thegenielab.com/cdn/shop/articles/shopify_app_development_process.jpg?v=1678137147');
+            "
+          >
+            <div class="course-badge">Popular</div>
+          </div>
+          <div class="course-content">
+            <h3>Shopify Development</h3>
+            <p>
+              Learn to create and customize professional Shopify stores, develop
+              custom themes, and implement advanced e-commerce features for
+              online success.
+            </p>
+            <ul class="course-features">
+              <li><i class="fas fa-check"></i> Store Setup & Customization</li>
+              <li><i class="fas fa-check"></i> Theme Development</li>
+              <li><i class="fas fa-check"></i> App Integration</li>
+              <li><i class="fas fa-check"></i> Payment Gateway Setup</li>
+              <li><i class="fas fa-check"></i> Store Optimization</li>
+            </ul>
+            <button
+              class="enroll-btn"
+              onclick="enrollCourse('Shopify Development')"
+            >
+              <i class="fas fa-rocket"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- E-commerce Management Card -->
+        <div class="course-card">
+          <div
+            class="course-image"
+            style="
+              background-image: url('https://www.shipbob.com/wp-content/uploads/2021/06/catalog-management.jpg');
+            "
+          >
+            <div class="course-badge">Professional</div>
+          </div>
+          <div class="course-content">
+            <h3>E-commerce Management</h3>
+            <p>
+              Master the complete e-commerce business cycle from product
+              sourcing to customer service and implement effective business
+              scaling strategies.
+            </p>
+            <ul class="course-features">
+              <li><i class="fas fa-check"></i> Inventory Management</li>
+              <li><i class="fas fa-check"></i> Order Processing</li>
+              <li><i class="fas fa-check"></i> Customer Service</li>
+              <li><i class="fas fa-check"></i> Business Scaling</li>
+              <li><i class="fas fa-check"></i> Analytics & Reporting</li>
+            </ul>
+            <button
+              class="enroll-btn"
+              onclick="enrollCourse('E-commerce Management')"
+            >
+              <i class="fas fa-rocket"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Freelancing Course Card -->
+        <div class="course-card">
+          <div
+            class="course-image"
+            style="
+              background-image: url('https://assets.designhill.com/design-blog/wp-content/uploads/2021/10/Start-Freelancing-As-A-Design-Student.jpg');
+            "
+          >
+            <div class="course-badge">Professional</div>
+          </div>
+          <div class="course-content">
+            <h3>Freelancing</h3>
+            <p>
+              Learn how to work independently using online platforms, build
+              strong client relationships, and earn from your skills globally.
+            </p>
+            <ul class="course-features">
+              <li><i class="fas fa-check"></i> Fiverr & Upwork Introduction</li>
+              <li><i class="fas fa-check"></i> Profile Optimization</li>
+              <li><i class="fas fa-check"></i> Winning Proposals</li>
+              <li><i class="fas fa-check"></i> Client Communication</li>
+              <li>
+                <i class="fas fa-check"></i> Delivering & Earning Securely
+              </li>
+            </ul>
+            <button class="enroll-btn" onclick="enrollCourse('Freelancing')">
+              <i class="fas fa-rocket"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- E-Commerce Course Card -->
+        <div class="course-card">
+          <div
+            class="course-image"
+            style="
+              background-image: url('https://www.liveconnectevent.com/wp-content/uploads/2022/08/E-Commerce.jpeg');
+            "
+          >
+            <div class="course-badge">Professional</div>
+          </div>
+          <div class="course-content">
+            <h3>E-Commerce</h3>
+            <p>
+              Learn how to start, manage, and scale your online business using
+              top e-commerce platforms and smart marketing strategies.
+            </p>
+            <ul class="course-features">
+              <li><i class="fas fa-check"></i> Online Store Setup</li>
+              <li><i class="fas fa-check"></i> Product Sourcing & Listing</li>
+              <li><i class="fas fa-check"></i> Order & Inventory Management</li>
+              <li><i class="fas fa-check"></i> Online Payments & Shipping</li>
+              <li><i class="fas fa-check"></i> Digital Marketing for Sales</li>
+            </ul>
+            <button class="enroll-btn" onclick="enrollCourse('E-Commerce')">
+              <i class="fas fa-rocket"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Amazon Virtual Assistant Course Card -->
+        <div class="course-card">
+          <div
+            class="course-image"
+            style="
+              background-image: url('https://cenit.edu.pk/wp-content/uploads/2023/08/amazon-virtual-assistant-1-1024x736.png');
+            "
+          >
+            <div class="course-badge">Professional</div>
+          </div>
+          <div class="course-content">
+            <h3>Amazon Virtual Assistant</h3>
+            <p>
+              Learn how to assist Amazon sellers by managing product listings,
+              store operations, and boosting sales through expert techniques.
+            </p>
+            <ul class="course-features">
+              <li>
+                <i class="fas fa-check"></i> Amazon Seller Central Management
+              </li>
+              <li><i class="fas fa-check"></i> Product Research</li>
+              <li>
+                <i class="fas fa-check"></i> Listing Creation & Optimization
+              </li>
+              <li><i class="fas fa-check"></i> Order & Inventory Handling</li>
+              <li><i class="fas fa-check"></i> PPC Ads & Ranking Strategy</li>
+            </ul>
+            <button
+              class="enroll-btn"
+              onclick="enrollCourse('Amazon Virtual Assistant')"
+            >
+              <i class="fas fa-rocket"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center">
+        <a href="index.html" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+      </div>
+    </div>
+
+    <script>
+      function enrollCourse(courseName) {
+        const message = `I'm interested in ${courseName} course at National College of Technology`;
+        const whatsappUrl = `https://wa.me/923167772003?text=${encodeURIComponent(
+          message
+        )}`;
+        window.open(whatsappUrl, "_blank");
+      }
+
+      // Additional animation on scroll
+      document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".course-card");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.animation = `fadeInUp 0.6s ease-out forwards`;
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        cards.forEach((card) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(30px)";
+          observer.observe(card);
+        });
+      });
+    </script>
+  </body>
+</html>
