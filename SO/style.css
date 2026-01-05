@@ -135,6 +135,9 @@ header {
   opacity: 0;
   transition: all 0.3s ease;
 }
+.dropdown li {
+  list-style: none;
+}
 
 .dropdown li a {
   color: var(--dark);
@@ -187,7 +190,7 @@ header {
 
 /* Create invisible hover bridge between dropdown and nested dropdown */
 .nested-dropdown-parent::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: -10px;
@@ -363,7 +366,7 @@ header {
 }
 
 .vm-image:hover img {
-  transform: scale(1.05);
+  transform: scale(1.07);
 }
 
 .section-title {
@@ -970,6 +973,18 @@ footer:before {
   .vm-image {
     min-width: 100%;
   }
+  .hero {
+    height: 70vh;
+  }
+
+  .carousel {
+    height: 70vh;
+  }
+  .hero-content1 h1 {
+    margin-top: 1.7em;
+    font-size: 1.7rem;
+    text-align: center;
+  }
 
   .step {
     min-width: 100%;
@@ -980,7 +995,7 @@ footer:before {
   }
 
   .section-title h2 {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 
   .affiliation-item {

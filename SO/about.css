@@ -26,7 +26,7 @@ body {
   height: 90vh;
   margin-top: -115px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("https://www.riftrust.com/wp-content/uploads/2024/10/One-of-the-Best-US-Universities-Is-Stanford-University.jpg");
+    url("../PIC/abcd.jpg");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -159,14 +159,14 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-
-
-
 /* team section */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+}
+.section-title .Fcss {
+  font-size: 5em;
 }
 
 .section-title {
@@ -656,6 +656,9 @@ body {
 
   .mv-card {
     min-width: 100%;
+  }
+  .section-title .Fcss {
+    font-size: 3em;
   }
 }
 

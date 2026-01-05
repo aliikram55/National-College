@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curriculum - National College of Technology</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #1a2c5f;
+      --secondary: #f8a31b;
+      --light: #f5f5f5;
+      --dark: #333;
+      --white: #fff;
+      --accent: #2c3e50;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Hero Section */
+    .curriculum-hero {
+      position: relative;
+      height: 90vh;
+      margin-top: -115px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: var(--white);
+      text-align: center;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(26, 44, 95, 0.1),
+          rgba(26, 44, 95, 0.1)),
+        url("https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29sbGVnZXxlbnwwfHwwfHx8MA%3D%3D");
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg,
+          rgba(26, 44, 95, 0.7) 0%,
+          rgba(248, 163, 27, 0.4) 100%);
+      z-index: -1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background-color: var(--secondary);
+      color: var(--white);
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(248, 163, 27, 0.3);
+      animation: fadeInUp 1s ease 0.4s both;
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(248, 163, 27, 0.4);
+      background-color: #e69100;
+    }
+
+    .breadcrumb {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 30px;
+      animation: fadeInUp 1s ease 0.1s both;
+    }
+
+    .breadcrumb a {
+      color: var(--white);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .breadcrumb a:hover {
+      color: var(--secondary);
+    }
+
+    .breadcrumb span {
+      color: var(--secondary);
+    }
+
+    /* Curriculum Section */
+    .curriculum-section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title .Ccss {
+      font-size: 60px;
+    }
+
+    .section-title h2 {
+      color: var(--primary);
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--secondary);
+    }
+
+    .section-title p {
+      color: var(--dark);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .curriculum-tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tab-btn {
+      background-color: var(--white);
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tab-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent);
+      transition: var(--transition);
+    }
+
+    .tab-btn:hover::before {
+      left: 100%;
+    }
+
+    .tab-btn.active {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .tab-btn:hover {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .course-card {
+      background-color: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .course-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .course-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: var(--secondary);
+      color: var(--white);
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      z-index: 2;
+    }
+
+    .course-header {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 20px;
+      position: relative;
+    }
+
+    .course-header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--secondary);
+    }
+
+    .course-header h3 {
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+    }
+
+    .course-duration {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .course-body {
+      padding: 20px;
+    }
+
+    .course-description {
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+
+    .course-details {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .course-details li {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    .course-details li i {
+      color: var(--secondary);
+      margin-right: 10px;
+      font-size: 0.9rem;
+    }
+
+    .course-actions {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background-color: var(--secondary);
+      color: var(--white);
+    }
+
+    .btn-secondary:hover {
+      background-color: #e69100;
+      transform: translateY(-2px);
+    }
+
+    /* Resources Section */
+    .resources-section {
+      background-color: var(--white);
+      padding: 80px 0;
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .resource-card {
+      background-color: var(--light);
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .resource-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .resource-icon {
+      width: 70px;
+      height: 70px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: var(--white);
+      font-size: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .resource-card:hover .resource-icon {
+      background-color: var(--secondary);
+      transform: rotate(10deg) scale(1.1);
+    }
+
+    .resource-card h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .resource-card p {
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--secondary);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: var(--transition);
+      opacity: 0;
+      visibility: hidden;
+      z-index: 999;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background-color: #e69100;
+      transform: translateY(-3px);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .curriculum-tabs {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .tab-btn {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+      }
+      .curriculum-hero{
+        height: 50vh;
+      }
+      .hero-content {
+        margin-top: 1.5em;
+     }
+
+      .section-title .Ccss {
+        font-size: 1.5em;
+      }
+
+      .courses-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .course-actions {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .btn {
+        justify-content: center;
+      }
+
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="SO/style.css" />
+</head>
+
+<body>
+  <!-- Header & Navigation -->
+  <header>
+    <div class="container nav-container">
+      <div class="logo">
+        <img src="PIC/Logo.png" alt="NCT Logo" />
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown-parent">
+          <a href="#">Academic Programs <i class="fas fa-chevron-down"></i></a>
+          <ul class="dropdown">
+            <li class="nested-dropdown-parent">
+              <a href="IT.html">IT Courses <i class="fas fa-chevron-right"></i></a>
+              <ul class="nested-dropdown">
+                <li><a href="#">Web Development</a></li>
+                <li><a href="#">Graphic Designing</a></li>
+                <li><a href="#">Computer Application</a></li>
+                <li><a href="#">Data Entry Operator</a></li>
+                <li><a href="#">Python Programming</a></li>
+                <li><a href="#">Office Management</a></li>
+                <li><a href="#">Computerized Accounting</a></li>
+                <li><a href="#">Blogging</a></li>
+                <li><a href="#">Web Designing</a></li>
+                <li><a href="#">Shorthand</a></li>
+                <li><a href="#">Photography</a></li>
+                <li><a href="#">Video Editing</a></li>
+              </ul>
+            </li>
+            <li class="nested-dropdown-parent">
+              <a href="Ecom.html">Regular E-Commerce Courses
+                <i class="fas fa-chevron-right"></i></a>
+              <ul class="nested-dropdown">
+                <li><a href="#">Digital Marketing</a></li>
+                <li><a href="#">Shopify Development</a></li>
+                <li><a href="#">Freelancing</a></li>
+                <li><a href="#">E-Commerce</a></li>
+                <li><a href="#">Amazon Virtual Assistant</a></li>
+              </ul>
+            </li>
+            <li class="nested-dropdown-parent">
+              <a href="C.html">Regular Civil Courses <i class="fas fa-chevron-right"></i></a>
+              <ul class="nested-dropdown">
+                <li><a href="#">NEBOSH </a></li>
+                <li><a href="#">OTHM (Level-3)</a></li>
+                <li><a href="#">IOSH Managing Safely (UK)</a></li>
+                <li><a href="#">OSHA (USA) Workplace Safety</a></li>
+                <li><a href="#">HSE Officer (Pakistan)</a></li>
+                <li><a href="#">Safety Inspector (Pakistan)</a></li>
+                <li><a href="#">Civil Surveyor (Pakistan)</a></li>
+                <li><a href="#">AutoCAD (2D & 3D)</a></li>
+                <li><a href="#">Quantity Surveyor (QS)</a></li>
+              </ul>
+            </li>
+            <li class="nested-dropdown-parent">
+              <a href="CBD.html">Competency Based Diplomas <i class="fas fa-chevron-right"></i></a>
+              <ul class="nested-dropdown">
+                <li><a href="CBD.html">3 Months Diploma</a></li>
+                <li><a href="CBD.html">6 Months Diploma</a></li>
+                <li><a href="CBD.html">1 Year Diploma</a></li>
+                <li><a href="CBD.html">2 Year Diploma</a></li>
+                <li><a href="CBD.html">3 Year Diploma</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="#">Curriculum</a></li>
+        <li><a href="download.html">Downloads</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+
+      <div class="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+  <!-- Hero Section -->
+  <section class="curriculum-hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Course Curriculum</h1>
+      <p style="text-align: center">
+        Explore our comprehensive curriculum designed to provide practical
+        skills and industry-relevant knowledge
+      </p>
+      <a href="#curriculum" class="hero-cta">View Courses</a>
+    </div>
+  </section>
+
+  <!-- Curriculum Section -->
+  <section class="curriculum-section" id="curriculum">
+    <div class="container">
+      <div class="section-title">
+        <h2 class="Ccss">Our Comprehensive Course Curriculum</h2>
+        <p style="text-align: center">
+          Explore our diverse range of short courses designed to provide
+          practical skills and industry-relevant knowledge for career
+          advancement.
+        </p>
+      </div>
+
+      <div class="curriculum-tabs">
+        <button class="tab-btn active" data-tab="it">IT Courses</button>
+        <button class="tab-btn" data-tab="ecommerce">
+          E-Commerce Courses
+        </button>
+        <button class="tab-btn" data-tab="civil">Civil Courses</button>
+        <button class="tab-btn" data-tab="diplomas">Diploma Programs</button>
+      </div>
+
+      <!-- IT Courses Tab -->
+      <div class="tab-content active" id="it">
+        <div class="courses-grid">
+          <!-- Web Development Course -->
+          <div class="course-card">
+            <div class="course-badge">Popular</div>
+            <div class="course-header">
+              <h3>Web Development</h3>
+              <p class="course-duration">Duration: 3 Months</p>
+            </div>
+            <div class="course-body">
+              <p class="course-description">
+                Learn full-stack web development with HTML, CSS, JavaScript,
+                and modern frameworks.
+              </p>
+              <ul class="course-details">
+                <li>
+                  <i class="fas fa-check"></i> Front-end & Back-end
+                  Development
+                </li>
+                <li><i class="fas fa-check"></i> Database Integration</li>
+                <li><i class="fas fa-check"></i> Responsive Design</li>
+                <li><i class="fas fa-check"></i> Project-Based Learning</li>
+              </ul>
+              <div class="course-actions">
+                <button class="btn btn-primary">
+                  <i class="fas fa-download"></i>
+                  <a href="Forms/Courses/Web Designing and Development With Custom outline.pdf" class="download-btn"
+                    style="text-decoration: none; color: white" download>Syllabus PDF</a>
+                </button>
+                <button class="btn btn-secondary">
+                  <i class="fas fa-info-circle"></i> Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Computer Application Course  -->
+
+          <div class="course-card">
+            <div class="course-badge">Popular</div>
+            <div class="course-header">
+              <h3>Computer Application</h3>
+              <p class="course-duration">Duration: 3 Months</p>
+            </div>
+            <div class="course-body">
+              <p class="course-description">
+                Learn essential computer applications including MS Word,
+                Excel, PowerPoint, and Internet usage for professional and
+                academic purposes.
+              </p>
+              <ul class="course-details">
+                <li>
+                  <i class="fas fa-check"></i> MS Word, Excel & PowerPoint
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Internet & Email Handling
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> File Management & Operating
+                  System
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Practical Office Work Skills
+                </li>
+              </ul>
+              <div class="course-actions">
+                <button class="btn btn-primary">
+                  <i class="fas fa-download"></i>
+                  <a href="Forms/Courses/Computer Applications.pdf" class="download-btn"
+                    style="text-decoration: none; color: white" download>
+                    Syllabus PDF
+                  </a>
+                </button>
+                <button class="btn btn-secondary">
+                  <i class="fas fa-info-circle"></i> Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- office Management Course -->
+
+          <div class="course-card">
+            <div class="course-badge">Popular</div>
+            <div class="course-header">
+              <h3>Office Management</h3>
+              <p class="course-duration">Duration: 3 Months</p>
+            </div>
+            <div class="course-body">
+              <p class="course-description">
+                Learn professional office management skills including
+                documentation, record keeping, correspondence, and office
+                coordination for corporate environments.
+              </p>
+              <ul class="course-details">
+                <li>
+                  <i class="fas fa-check"></i> Office Administration &
+                  Management
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Record Keeping & Filing System
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Professional Communication
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Office Software & Daily Tasks
+                </li>
+              </ul>
+              <div class="course-actions">
+                <button class="btn btn-primary">
+                  <i class="fas fa-download"></i>
+                  <a href="Forms/Courses/Front Office.pdf" class="download-btn"
+                    style="text-decoration: none; color: white" download>
+                    Syllabus PDF
+                  </a>
+                </button>
+                <button class="btn btn-secondary">
+                  <i class="fas fa-info-circle"></i> Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Entry Operator Course -->
+
+          <div class="course-card">
+            <div class="course-badge">Popular</div>
+            <div class="course-header">
+              <h3>Data Entry</h3>
+              <p class="course-duration">Duration: 3 Months</p>
+            </div>
+            <div class="course-body">
+              <p class="course-description">
+                Learn professional data entry skills including typing, form
+                filling, MS Excel data handling, and online data management
+                work.
+              </p>
+              <ul class="course-details">
+                <li>
+                  <i class="fas fa-check"></i> Fast Typing & Accuracy Training
+                </li>
+                <li><i class="fas fa-check"></i> MS Excel for Data Entry</li>
+                <li>
+                  <i class="fas fa-check"></i> Online Forms & Database
+                  Handling
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Real-World Data Entry Practice
+                </li>
+              </ul>
+              <div class="course-actions">
+                <button class="btn btn-primary">
+                  <i class="fas fa-download"></i>
+                  <a href="Forms/Courses/Computerized Accounting.pdf" class="download-btn"
+                    style="text-decoration: none; color: white" download>
+                    Syllabus PDF
+                  </a>
+                </button>
+                <button class="btn btn-secondary">
+                  <i class="fas fa-info-circle"></i> Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Graphic Designing Course -->
+          <div class="course-card">
+            <div class="course-badge">New</div>
+            <div class="course-header">
+              <h3>Graphic Designing</h3>
+              <p class="course-duration">Duration: 3 Months</p>
+            </div>
+            <div class="course-body">
+              <p class="course-description">
+                Master design principles and tools to create compelling visual
+                content.
+              </p>
+              <ul class="course-details">
+                <li>
+                  <i class="fas fa-check"></i> Adobe Photoshop & Illustrator
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Logo & Brand Identity Design
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Print & Digital Media Design
+                </li>
+                <li><i class="fas fa-check"></i> Portfolio Development</li>
+              </ul>
+              <div class="course-actions">
+                <button class="btn btn-primary">
+                  <i class="fas fa-download"></i>
+                  <a href="Forms/Courses/Computer Graphics.pdf" class="download-btn"
+                    style="text-decoration: none; color: white" download>Syllabus PDF</a>
+                </button>
+                <button class="btn btn-secondary">
+                  <i class="fas fa-info-circle"></i> Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Python Programming Course -->
+          <div class="course-card">
+            <div class="course-header">
+              <h3>Python Programming</h3>
+              <p class="course-duration">Duration: 6 Months</p>
+            </div>
+            <div class="course-body">
+              <p class="course-description">
+                Learn Python programming from basics to advanced concepts with
+                practical applications.
+              </p>
+              <ul class="course-details">
+                <li><i class="fas fa-check"></i> Python Fundamentals</li>
+                <li>
+                  <i class="fas fa-check"></i> Data Structures & Algorithms
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Web Scraping & Automation
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Data Analysis with Pandas
+                </li>
+              </ul>
+              <div class="course-actions">
+                <button class="btn btn-primary">
+                  <i class="fas fa-download"></i>
+                  <a href="Forms/Courses/Computer Graphics.pdf" class="download-btn"
+                    style="text-decoration: none; color: white" download>Syllabus PDF</a>
+                </button>
+                <button class="btn btn-secondary">
+                  <i class="fas fa-info-circle"></i> Details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- E-Commerce Courses Tab -->
+      <div class="tab-content" id="ecommerce">
+        <div class="courses-grid">
+          <!-- Digital Marketing Course -->
+          <div class="course-card">
+            <div class="course-badge">Popular</div>
+            <div class="course-header">
+              <h3>Digital Marketing</h3>
+              <p class="course-duration">Duration: 3 Months</p>
+            </div>
+            <div class="course-body">
+              <p class="course-description">
+                Master digital marketing strategies including SEO, social
+                media, and email marketing.
+              </p>
+              <ul class="course-details">
+                <li><i class="fas fa-check"></i> SEO & SEM Strategies</li>
+                <li><i class="fas fa-check"></i> Social Media Marketing</li>
+                <li><i class="fas fa-check"></i> Content Marketing</li>
+                <li><i class="fas fa-check"></i> Analytics & Reporting</li>
+              </ul>
+              <div class="course-actions">
+                <button class="btn btn-primary">
+                  <i class="fas fa-download"></i>
+                  <a href="Forms/Courses/IT-19 SEO Digital Marketing.pdf" class="download-btn"
+                    style="text-decoration: none; color: white" download>Syllabus PDF</a>
+                </button>
+                <button class="btn btn-secondary">
+                  <i class="fas fa-info-circle"></i> Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shopify Development Course -->
+          <div class="course-card">
+            <div class="course-header">
+              <h3>Shopify Development</h3>
+              <p class="course-duration">Duration: 3 Months</p>
+            </div>
+            <div class="course-body">
+              <p class="course-description">
+                Learn to build and customize e-commerce stores using Shopify
+                platform.
+              </p>
+              <ul class="course-details">
+                <li>
+                  <i class="fas fa-check"></i> Store Setup & Configuration
+                </li>
+                <li><i class="fas fa-check"></i> Theme Customization</li>
+                <li><i class="fas fa-check"></i> App Integration</li>
+                <li><i class="fas fa-check"></i> Payment Gateway Setup</li>
+              </ul>
+              <div class="course-actions">
+                <button class="btn btn-primary">
+                  <i class="fas fa-download"></i>
+                  <a href="Forms/Courses/Social Media Marketing Expert.pdf" class="download-btn"
+                    style="text-decoration: none; color: white" download>Syllabus PDF</a>
+                </button>
+                <button class="btn btn-secondary">
+                  <i class="fas fa-info-circle"></i> Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Amazon Virtual Assistant Course -->
+          <div class="course-card">
+            <div class="course-badge">Trending</div>
+            <div class="course-header">
+              <h3>Amazon Virtual Assistant</h3>
+              <p class="course-duration">Duration: 3 Months</p>
+            </div>
+            <div class="course-body">
+              <p class="course-description">
+                Become an expert in managing Amazon seller accounts and
+                operations.
+              </p>
+              <ul class="course-details">
+                <li>
+                  <i class="fas fa-check"></i> Product Listing Optimization
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> PPC Advertising Management
+                </li>
+                <li><i class="fas fa-check"></i> Inventory Management</li>
+                <li>
+                  <i class="fas fa-check"></i> Customer Service Strategies
+                </li>
+              </ul>
+              <div class="course-actions">
+                <button class="btn btn-primary">
+                  <i class="fas fa-download"></i>
+                  <a href="Forms/Courses/Social Media Marketing Expert.pdf" class="download-btn"
+                    style="text-decoration: none; color: white" download>Syllabus PDF</a>
+                </button>
+                <button class="btn btn-secondary">
+                  <i class="fas fa-info-circle"></i> Details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Civil Courses Tab -->
+      <div class="tab-content" id="civil">
+        <div class="courses-grid">
+          <!-- NEBOSH Course -->
+          <div class="course-card">
+            <div class="course-badge">Certification</div>
+            <div class="course-header">
+              <h3>NEBOSH Certification</h3>
+              <p class="course-duration">Duration: 3 Months</p>
+            </div>
+            <div class="course-body">
+              <p class="course-description">
+                Internationally recognized health and safety certification for
+                professionals.
+              </p>
+              <ul class="course-details">
+                <li>
+                  <i class="fas fa-check"></i> Health & Safety Management
+                </li>
+                <li><i class="fas fa-check"></i> Risk Assessment</li>
+                <li>
+                  <i class="fas fa-check"></i> Workplace Hazards Control
+                </li>
+                <li><i class="fas fa-check"></i> International Standards</li>
+              </ul>
+              <div class="course-actions">
+                <button class="btn btn-primary">
+                  <i class="fas fa-download"></i>
+                  <a href="Forms/Courses/Safety Inspector.pdf" class="download-btn"
+                    style="text-decoration: none; color: white" download>Syllabus PDF</a>
+                </button>
+                <button class="btn btn-secondary">
+                  <i class="fas fa-info-circle"></i> Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- AutoCAD Course -->
+          <div class="course-card">
+            <div class="course-header">
+              <h3>AutoCAD (2D & 3D)</h3>
+              <p class="course-duration">Duration: 3 Months</p>
+            </div>
+            <div class="course-body">
+              <p class="course-description">
+                Master AutoCAD for architectural and engineering drawings in
+                2D and 3D.
+              </p>
+              <ul class="course-details">
+                <li><i class="fas fa-check"></i> 2D Drafting & Annotation</li>
+                <li>
+                  <i class="fas fa-check"></i> 3D Modeling & Visualization
+                </li>
+                <li><i class="fas fa-check"></i> Architectural Drawings</li>
+                <li><i class="fas fa-check"></i> Mechanical Drawings</li>
+              </ul>
+              <div class="course-actions">
+                <button class="btn btn-primary">
+                  <i class="fas fa-download"></i>
+                  <a href="Forms/Courses/Auto CAD (Civil).pdf" class="download-btn"
+                    style="text-decoration: none; color: white" download>Syllabus PDF</a>
+                </button>
+                <button class="btn btn-secondary">
+                  <i class="fas fa-info-circle"></i> Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quantity Surveyor Course -->
+          <div class="course-card">
+            <div class="course-badge">High Demand</div>
+            <div class="course-header">
+              <h3>Quantity Surveyor (QS)</h3>
+              <p class="course-duration">Duration: 3 Months</p>
+            </div>
+            <div class="course-body">
+              <p class="course-description">
+                Learn cost estimation and management for construction
+                projects.
+              </p>
+              <ul class="course-details">
+                <li><i class="fas fa-check"></i> Cost Estimation</li>
+                <li><i class="fas fa-check"></i> Tender Documentation</li>
+                <li><i class="fas fa-check"></i> Contract Management</li>
+                <li><i class="fas fa-check"></i> Project Cost Control</li>
+              </ul>
+              <div class="course-actions">
+                <button class="btn btn-primary">
+                  <i class="fas fa-download"></i>
+                  <a href="Forms/Courses/Quantity Surveyor.pdf" class="download-btn"
+                    style="text-decoration: none; color: white" download>Syllabus PDF</a>
+                </button>
+                <button class="btn btn-secondary">
+                  <i class="fas fa-info-circle"></i> Details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diploma Programs Tab -->
+      <div class="tab-content" id="diplomas">
+        <div class="courses-grid">
+          <!-- Graphic Design Diploma -->
+          <div class="course-card">
+            <div class="course-badge">Advanced</div>
+            <div class="course-header">
+              <h3>Graphic Design Diploma</h3>
+              <p class="course-duration">Duration: 9 Months</p>
+            </div>
+            <div class="course-body">
+              <p class="course-description">
+                Comprehensive diploma program covering all aspects of graphic
+                design.
+              </p>
+              <ul class="course-details">
+                <li>
+                  <i class="fas fa-check"></i> Advanced Design Principles
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Branding & Identity Systems
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> UI/UX Design Fundamentals
+                </li>
+                <li><i class="fas fa-check"></i> Professional Portfolio</li>
+              </ul>
+              <div class="course-actions">
+                <button class="btn btn-primary">
+                  <i class="fas fa-download"></i>
+                  <a href="Forms/Courses/Computer Graphics.pdf" class="download-btn"
+                    style="text-decoration: none; color: white" download>Syllabus PDF</a>
+                </button>
+                <button class="btn btn-secondary">
+                  <i class="fas fa-info-circle"></i> Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Safety Management Diploma -->
+          <div class="course-card">
+            <div class="course-header">
+              <h3>Safety Management Diploma</h3>
+              <p class="course-duration">Duration: 3 Months</p>
+            </div>
+            <div class="course-body">
+              <p class="course-description">
+                Advanced diploma in occupational health and safety management.
+              </p>
+              <ul class="course-details">
+                <li>
+                  <i class="fas fa-check"></i> Safety Management Systems
+                </li>
+                <li><i class="fas fa-check"></i> Risk Management</li>
+                <li><i class="fas fa-check"></i> Legal Compliance</li>
+                <li>
+                  <i class="fas fa-check"></i> Emergency Response Planning
+                </li>
+              </ul>
+              <div class="course-actions">
+                <button class="btn btn-primary">
+                  <i class="fas fa-download"></i>
+                  <a href="Forms/Courses/Safety Inspector.pdf" class="download-btn"
+                    style="text-decoration: none; color: white" download>Syllabus PDF</a>
+                </button>
+                <button class="btn btn-secondary">
+                  <i class="fas fa-info-circle"></i> Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Management Diploma -->
+          <div class="course-card">
+            <div class="course-badge">Certification</div>
+            <div class="course-header">
+              <h3>Project Management Diploma</h3>
+              <p class="course-duration">Duration: 10 Months</p>
+            </div>
+            <div class="course-body">
+              <p class="course-description">
+                Comprehensive project management training with industry
+                methodologies.
+              </p>
+              <ul class="course-details">
+                <li>
+                  <i class="fas fa-check"></i> Project Planning & Scheduling
+                </li>
+                <li><i class="fas fa-check"></i> Budgeting & Cost Control</li>
+                <li><i class="fas fa-check"></i> Risk Management</li>
+                <li>
+                  <i class="fas fa-check"></i> Agile & Waterfall Methodologies
+                </li>
+              </ul>
+              <div class="course-actions">
+                <button class="btn btn-primary">
+                  <i class="fas fa-download"></i>
+                  <a href="Forms/Courses/Computer Applications.pdf.pdf" class="download-btn"
+                    style="text-decoration: none; color: white" download>Syllabus PDF</a>
+                </button>
+                <button class="btn btn-secondary">
+                  <i class="fas fa-info-circle"></i> Details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WhatsApp Widget -->
+  <div class="whatsapp-widget">
+    <div class="social-icons" id="socialIcons">
+      <a href="https://wa.me/923167772003" class="social-icon whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="https://web.facebook.com/nationalcollegesargodha" class="social-icon facebook" target="_blank">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://www.instagram.com/nationalcollegesargodha/" class="social-icon instagram" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Our Courses</h3>
+          <ul class="footer-links">
+            <li><a href="#">IT Courses</a></li>
+            <li><a href="#">Regular E-Commerce Courses</a></li>
+            <li><a href="#">Regular Civil Courses</a></li>
+            <li><a href="#">Competency Based Diplomas</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">Admission</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <ul class="footer-links">
+            <li>
+              <i class="fas fa-map-marker-alt"></i> National Building Near UBL
+              Bank University Road Sargodha
+            </li>
+            <li><i class="fas fa-phone"></i> 0316-7772003</li>
+            <li><i class="fas fa-phone"></i> 0316-7772004</li>
+            <li><i class="fas fa-phone"></i> 00 92 048 3212277</li>
+            <li><i class="fas fa-envelope"></i> ncet.sgd@gmail.com</li>
+          </ul>
+          <div class="social-links1">
+            <a href="https://web.facebook.com/nationalcollegesargodha"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/923167772003" target="_blank">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.instagram.com/nationalcollegesargodha/"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p style="text-align: center">
+          &copy; 2023 National College of Technology. All Rights Reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script>
+    // Tab functionality
+    document.addEventListener("DOMContentLoaded", function () {
+      const tabBtns = document.querySelectorAll(".tab-btn");
+      const tabContents = document.querySelectorAll(".tab-content");
+
+      tabBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // Remove active class from all buttons and contents
+          tabBtns.forEach((b) => b.classList.remove("active"));
+          tabContents.forEach((c) => c.classList.remove("active"));
+
+          // Add active class to clicked button
+          btn.classList.add("active");
+
+          // Show corresponding content
+          const tabId = btn.getAttribute("data-tab");
+          document.getElementById(tabId).classList.add("active");
+        });
+      });
+
+      // PDF download functionality
+      const downloadButtons = document.querySelectorAll(".btn-primary");
+      downloadButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          const courseName =
+            this.closest(".course-card")?.querySelector("h3")?.textContent ||
+            this.closest(".resource-card")?.querySelector("h3")?.textContent;
+          alert(`Downloading PDF for: ${courseName}`);
+          // In a real implementation, this would download the actual PDF
+        });
+      });
+
+      // Back to top button
+      const backToTopBtn = document.querySelector(".back-to-top");
+
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+          backToTopBtn.classList.add("show");
+        } else {
+          backToTopBtn.classList.remove("show");
+        }
+      });
+
+      backToTopBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // Close mobile menu when clicking on a link
+      const navLinksItems = document.querySelectorAll(".nav-links a");
+      navLinksItems.forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+          mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+      });
+    });
+  </script>
+  <script src="SO/script.js"></script>
+</body>
+
+</html>

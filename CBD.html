@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National College of Technology - Courses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a2c5f;
+            --secondary: #f8a31b;
+            --light: #f5f5f5;
+            --dark: #333;
+            --white: #fff;
+            --accent: #2c3e50;
+            --gradient: linear-gradient(135deg, #1a2c5f 0%, #2c3e50 100%);
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 20px 15px;
+            display: block;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links a.active {
+            color: var(--secondary);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            right: 15px;
+            height: 3px;
+            background-color: var(--secondary);
+            border-radius: 3px 3px 0 0;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        /* Section Styling */
+        .course-section {
+            padding: 80px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .course-section:nth-child(even) {
+            background-color: var(--light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Courses Grid */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* Course Card */
+        .course-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .course-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .course-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(248, 163, 27, 0.3);
+        }
+
+        .course-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-content h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .course-content p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .course-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .course-features li {
+            padding: 8px 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .course-features li:last-child {
+            border-bottom: none;
+        }
+
+        .course-features li i {
+            color: var(--secondary);
+            margin-right: 10px;
+            font-size: 12px;
+            background: rgba(248, 163, 27, 0.1);
+            padding: 6px;
+            border-radius: 50%;
+        }
+
+        .enroll-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: var(--gradient);
+            color: var(--white);
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: auto;
+        }
+
+        .enroll-btn:hover {
+            background: linear-gradient(135deg, #15234a 0%, #243447 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 44, 95, 0.3);
+        }
+
+        /* Competency Based Diplomas Section */
+        .competency-section {
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-top: 30px;
+        }
+
+        .competency-container {
+            display: flex;
+            min-height: 600px;
+        }
+
+        .competency-left {
+            flex: 1;
+            padding: 30px;
+            background-color: #f0f2f5;
+            overflow-y: auto;
+            max-height: 600px;
+        }
+
+        .competency-right {
+            flex: 1;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .competency-right h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .competency-right p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .diploma-list {
+            list-style: none;
+        }
+
+        .diploma-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .diploma-link {
+            display: block;
+            padding: 15px;
+            background-color: var(--white);
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .diploma-link:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            border-left-color: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--white);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.8;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .courses-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .competency-container {
+                flex-direction: column;
+            }
+            
+            .competency-left, .competency-right {
+                width: 100%;
+            }
+            
+            .competency-right {
+                padding: 40px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-links a {
+                padding: 15px;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .section-header p {
+                font-size: 1rem;
+            }
+            
+            .course-section {
+                padding: 60px 20px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .course-card {
+                margin: 0 10px;
+            }
+            
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>National <span>College of Technology</span></h1>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#it-courses" class="nav-link active">IT Courses</a></li>
+                <li><a href="#ecommerce-courses" class="nav-link">E-commerce Courses</a></li>
+                <li><a href="#civil-courses" class="nav-link">Civil Courses</a></li>
+                <li><a href="#competency-diplomas" class="nav-link">Competency Based Diplomas</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- IT Courses Section -->
+        <section id="it-courses" class="course-section">
+            <div class="section-header">
+                <h2>Regular IT Courses</h2>
+                <p>Master cutting-edge technologies and programming languages with our comprehensive IT curriculum designed for the digital age</p>
+            </div>
+            
+            <div class="courses-grid">
+                <!-- Web Development Card -->
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://aoasoftwaresolution.com/wp-content/uploads/2023/06/wde.jpg');">
+                        <div class="course-badge">Popular</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Web Development</h3>
+                        <p>Build modern, responsive websites and web applications using the latest technologies including HTML5, CSS3, JavaScript, React, and Node.js.</p>
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Full Stack Development</li>
+                            <li><i class="fas fa-check"></i> React.js & Vue.js</li>
+                            <li><i class="fas fa-check"></i> RESTful APIs</li>
+                            <li><i class="fas fa-check"></i> Database Integration</li>
+                        </ul>
+                        <button class="enroll-btn" onclick="enrollCourse('Web Development')">
+                            <i class="fas fa-rocket"></i> Enroll Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Graphic Designing Card -->
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://i.pinimg.com/736x/7f/32/0a/7f320aad80ace1060a8f59165449c438.jpg');">
+                        <div class="course-badge">Creative</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Graphic Designing</h3>
+                        <p>Learn to create stunning visuals using modern design tools and principles. Master typography, color theory, branding, and digital illustration.</p>
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Adobe Photoshop & Illustrator</li>
+                            <li><i class="fas fa-check"></i> Logo & Branding Design</li>
+                            <li><i class="fas fa-check"></i> Typography & Color Theory</li>
+                            <li><i class="fas fa-check"></i> Digital & Print Media Design</li>
+                        </ul>
+                        <button class="enroll-btn" onclick="enrollCourse('Graphic Designing')">
+                            <i class="fas fa-rocket"></i> Enroll Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Computer Application Card -->
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://www.learningroutes.in/_next/image?url=https%3A%2F%2Faskusedu.com%2Fblogdashboard%2Fwp-content%2Fuploads%2F2024%2F12%2Fbusiness.jpg&w=1920&q=75');">
+                        <div class="course-badge">Essential</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Computer Application</h3>
+                        <p>Gain hands-on skills in computer fundamentals, office applications, and software tools. Learn to use Word, Excel, PowerPoint, and basic programming.</p>
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> MS Office (Word, Excel, PowerPoint)</li>
+                            <li><i class="fas fa-check"></i> Internet & Email Skills</li>
+                            <li><i class="fas fa-check"></i> Computer Fundamentals</li>
+                            <li><i class="fas fa-check"></i> Introduction to Programming</li>
+                        </ul>
+                        <button class="enroll-btn" onclick="enrollCourse('Computer Application')">
+                            <i class="fas fa-rocket"></i> Enroll Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- E-commerce Courses Section -->
+        <section id="ecommerce-courses" class="course-section">
+            <div class="section-header">
+                <h2>E-commerce Courses</h2>
+                <p>Master online business strategies, digital marketing, and e-commerce platform development to build successful online ventures</p>
+            </div>
+            
+            <div class="courses-grid">
+                <!-- Digital Marketing Card -->
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://s44783.pcdn.co/in/wp-content/uploads/sites/3/2023/03/How-to-Learn-Digital-Marketing.jpg.optimal.jpg');">
+                        <div class="course-badge">High Demand</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Digital Marketing</h3>
+                        <p>Master comprehensive digital marketing strategies including SEO, social media marketing, email campaigns, and PPC advertising to drive business growth.</p>
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> SEO & SEM Strategies</li>
+                            <li><i class="fas fa-check"></i> Social Media Marketing</li>
+                            <li><i class="fas fa-check"></i> Email Marketing</li>
+                            <li><i class="fas fa-check"></i> Google Analytics</li>
+                        </ul>
+                        <button class="enroll-btn" onclick="enrollCourse('Digital Marketing')">
+                            <i class="fas fa-rocket"></i> Enroll Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Shopify Development Card -->
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://www.thegenielab.com/cdn/shop/articles/shopify_app_development_process.jpg?v=1678137147');">
+                        <div class="course-badge">Popular</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Shopify Development</h3>
+                        <p>Learn to create and customize professional Shopify stores, develop custom themes, and implement advanced e-commerce features for online success.</p>
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Store Setup & Customization</li>
+                            <li><i class="fas fa-check"></i> Theme Development</li>
+                            <li><i class="fas fa-check"></i> App Integration</li>
+                            <li><i class="fas fa-check"></i> Payment Gateway Setup</li>
+                        </ul>
+                        <button class="enroll-btn" onclick="enrollCourse('Shopify Development')">
+                            <i class="fas fa-rocket"></i> Enroll Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- E-commerce Management Card -->
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://www.shipbob.com/wp-content/uploads/2021/06/catalog-management.jpg');">
+                        <div class="course-badge">Professional</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>E-commerce Management</h3>
+                        <p>Master the complete e-commerce business cycle from product sourcing to customer service and implement effective business scaling strategies.</p>
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Inventory Management</li>
+                            <li><i class="fas fa-check"></i> Order Processing</li>
+                            <li><i class="fas fa-check"></i> Customer Service</li>
+                            <li><i class="fas fa-check"></i> Business Scaling</li>
+                        </ul>
+                        <button class="enroll-btn" onclick="enrollCourse('E-commerce Management')">
+                            <i class="fas fa-rocket"></i> Enroll Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Civil Courses Section -->
+        <section id="civil-courses" class="course-section">
+            <div class="section-header">
+                <h2>Civil Engineering Courses</h2>
+                <p>Build the future with comprehensive civil engineering education covering structural design, construction management, and infrastructure development</p>
+            </div>
+            
+            <div class="courses-grid">
+                <!-- NEBOSH International General Certificate Card -->
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://www.sheilds.org/wp-content/uploads/2023/05/nebosh-international-diploma-min.jpg');">
+                        <div class="course-badge">International</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>NEBOSH International General Certificate</h3>
+                        <p>Enhance your skills in workplace health and safety with globally recognized qualifications that open doors to professional HSE careers.</p>
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Risk Assessment & Control Measures</li>
+                            <li><i class="fas fa-check"></i> Workplace Hazards & Safety Management</li>
+                            <li><i class="fas fa-check"></i> Fire & Electrical Safety</li>
+                            <li><i class="fas fa-check"></i> International HSE Standards</li>
+                        </ul>
+                        <button class="enroll-btn" onclick="enrollCourse('NEBOSH International General Certificate')">
+                            <i class="fas fa-rocket"></i> Enroll Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- AutoCAD (2D & 3D) Course Card -->
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+                        <div class="course-badge">Design</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>AutoCAD (2D & 3D)</h3>
+                        <p>Master professional drafting and 3D modeling skills required in engineering, architecture, and construction design industries.</p>
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> 2D Drafting Essentials</li>
+                            <li><i class="fas fa-check"></i> 3D Modeling Techniques</li>
+                            <li><i class="fas fa-check"></i> Technical Drawing Standards</li>
+                            <li><i class="fas fa-check"></i> Practical Project Work</li>
+                        </ul>
+                        <button class="enroll-btn" onclick="enrollCourse('AutoCAD 2D 3D')">
+                            <i class="fas fa-rocket"></i> Enroll Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Quantity Surveyor (QS) Course Card -->
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1581093588401-22e6a9c1ac38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+                        <div class="course-badge">Construction</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Quantity Surveyor (QS)</h3>
+                        <p>Become a skilled Quantity Surveyor with expertise in cost estimation, BOQ preparation, and project measurement for construction works in Pakistan.</p>
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Cost Estimation Techniques</li>
+                            <li><i class="fas fa-check"></i> BOQ Preparation & Rate Analysis</li>
+                            <li><i class="fas fa-check"></i> Reading Civil Drawings & Plans</li>
+                            <li><i class="fas fa-check"></i> Real Project Based Training</li>
+                        </ul>
+                        <button class="enroll-btn" onclick="enrollCourse('Quantity Surveyor (QS)')">
+                            <i class="fas fa-rocket"></i> Enroll Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Competency Based Diplomas Section -->
+        <section id="competency-diplomas" class="course-section">
+            <div class="section-header">
+                <h2>Competency Based Diplomas</h2>
+                <p>Gain practical skills and industry-recognized certifications in just one year with our comprehensive diploma programs</p>
+            </div>
+            
+            <div class="competency-section">
+                <div class="competency-container">
+                    <div class="competency-left">
+                        <h3 style="color: var(--primary); margin-bottom: 20px;">Available Diploma Programs</h3>
+                        
+                        <ul class="diploma-list">
+                            <li class="diploma-item"><a href="#" class="diploma-link">General Diplomas</a></li>
+                            <li class="diploma-item"><a href="#" class="diploma-link">Aerospace Courses</a></li>
+                            <li class="diploma-item"><a href="#" class="diploma-link">Agriculture</a></li>
+                            <li class="diploma-item"><a href="#" class="diploma-link">Banking Sector</a></li>
+                            <li class="diploma-item"><a href="#" class="diploma-link">Business Administration</a></li>
+                            <li class="diploma-item"><a href="#" class="diploma-link">Civil Aviation</a></li>
+                            <li class="diploma-item"><a href="#" class="diploma-link">Communication & Language</a></li>
+                            <li class="diploma-item"><a href="#" class="diploma-link">Construction Management</a></li>
+                            <li class="diploma-item"><a href="#" class="diploma-link">Education Sector</a></li>
+                            <li class="diploma-item"><a href="#" class="diploma-link">Engineering (Required min one Year Experience)</a></li>
+                            <li class="diploma-item"><a href="#" class="diploma-link">Enterprise Development and Cottage Industry</a></li>
+                            <li class="diploma-item"><a href="#" class="diploma-link">Environmental Strategies</a></li>
+                            <li class="diploma-item"><a href="#" class="diploma-link">Heavy Machinery Courses</a></li>
+                            <li class="diploma-item"><a href="#" class="diploma-link">Hospital & Public Health Management</a></li>
+                            <li class="diploma-item"><a href="#" class="diploma-link">Hotel Industry</a></li>
+                            <li class="diploma-item"><a href="#" class="diploma-link">HR Courses</a></li>
+                            <li class="diploma-item"><a href="#" class="diploma-link">Information Technology</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="competency-right">
+                        <h3>Why Choose Competency Based Diplomas?</h3>
+                        <p>Our competency-based diploma programs are designed to provide you with practical, job-ready skills in just one year. These industry-recognized certifications will give you a competitive edge in the job market.</p>
+                        <p>Each program focuses on real-world applications and hands-on training to ensure you're prepared for the challenges of today's workforce.</p>
+                        <button class="enroll-btn" onclick="enrollCourse('Competency Based Diploma Program')" style="max-width: 250px;">
+                            <i class="fas fa-rocket"></i> Request More Information
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>National College of Technology</h3>
+                    <p>Providing quality education and practical skills for over 20 years. Our mission is to empower students with industry-relevant knowledge.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Education Street, City, Country</p>
+                    <p><i class="fas fa-phone"></i> +92 316 7772003</p>
+                    <p><i class="fas fa-envelope"></i> info@nationalcollege.edu.pk</p>
+                    <p><i class="fas fa-clock"></i> Mon - Sat: 9:00 AM - 6:00 PM</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#it-courses" style="color: white; text-decoration: none;">IT Courses</a></p>
+                    <p><a href="#ecommerce-courses" style="color: white; text-decoration: none;">E-commerce Courses</a></p>
+                    <p><a href="#civil-courses" style="color: white; text-decoration: none;">Civil Courses</a></p>
+                    <p><a href="#competency-diplomas" style="color: white; text-decoration: none;">Competency Based Diplomas</a></p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 National College of Technology. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+    
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Active navigation link based on scroll position
+        const sections = document.querySelectorAll('.course-section');
+        const navLinksArray = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinksArray.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Show/hide back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        
+        // Enroll button function
+        function enrollCourse(courseName) {
+            const message = `I'm interested in ${courseName} course at National College of Technology`;
+            const whatsappUrl = `https://wa.me/923167772003?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        // Back to top button
+        document.getElementById('backToTop').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
